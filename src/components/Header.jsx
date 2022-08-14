@@ -18,7 +18,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
-import { decrementCounter } from '../Service/Action/Action';
+import { decrementCounter,incrementCounter } from '../Service/Action/Action';
 import { width } from '@mui/system';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
@@ -31,9 +31,33 @@ import { handelSignOut } from '../utils/LoginFirebaseManager';
 
 
 export const Header = () => {
+  const product=useSelector(state=>state.product)
+  console.log(product,'incerement cart data qty')
 
-  //firabse authentication:
-  // handelSignOut()
+  const handelDecrement=(item_id)=>{
+    console.log('test')
+    console.log('data test',item_id)
+    let index = product.findIndex(obj => obj.id === item_id)
+
+    if (index >= 0) {
+      product[index].quantity = (product[index].quantity | 0) - 1     
+    }
+
+  }
+  
+
+  const handelincrement=(data)=>{
+  //  dispatch(incrementCounter(data))
+    console.log('data test',data)
+    let index = product.findIndex(obj => obj.id === data.id)
+
+    if (index >= 0) {
+      product[index].quantity = (product[index].quantity | 0) + 1     
+    }
+    
+    return index;
+    
+  }
 
 
       const[over,setOver]=useState(false)
@@ -49,7 +73,6 @@ export const Header = () => {
       const [isDrowerOpen, setisDrowerOpen] = useState(false)
       const domain = "https://availtrade.com/public/images/";
       
-  const product=useSelector(state=>state.product)
   let total=0;
   for(let i=0;i<product.length;i++){
     let prod=product[i]
@@ -218,8 +241,12 @@ export const Header = () => {
                                 product?.map(item =>
                                   <tr>
                                     <td><img src={item?.image} alt="" style={{  height: '50px', width: '50px' ,clipPath:'circle()'}}></img></td>
-                                    <td ><b>{item?.category.substring(0,9)}</b><br/><CurrencyRupeeIcon/>{item?.price}</td>
-                                    <td>{item?.start_quantity}</td>
+                                    <td ><b>{item?.category}</b><br/><CurrencyRupeeIcon/>{item?.price}</td>
+                                    <td><div className='input-group' style={{width:'100px'}}>
+                                        <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelDecrement(item.id)}>-</button>
+                                        <div className='form-control text-center' style={{width:'15px'}}>{item?.start_quantity}</div>
+                                        <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelincrement(item)}>+</button>
+                                      </div></td>
                                     <td><IconButton ><span style={{color:'red'}} onClick={()=>removeItem(item)}><DeleteIcon/></span></IconButton></td> 
 
                                   </tr>
