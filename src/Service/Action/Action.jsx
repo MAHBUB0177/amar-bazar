@@ -1,4 +1,4 @@
-import { ADD_TO_CART,REMOVE_CART,REMOVE_CART_ALL,USER_LOGEDIN ,ADD_FAV} from "../Constants/ActionType";
+import { ADD_TO_CART,REMOVE_CART,REMOVE_CART_ALL,USER_LOGEDIN ,ADD_FAV,INCREMENT_CART} from "../Constants/ActionType";
 
 export const incrementCounter=(data)=>{
            console.log(data,'action datas')
@@ -6,6 +6,14 @@ export const incrementCounter=(data)=>{
                     type:ADD_TO_CART,
                     payload:data
           }
+}
+
+export const incrementCartProduct=(data)=>{
+  return{
+            type:INCREMENT_CART,
+            payload:data
+            
+  }
 }
 
 export const decrementCounter=(data)=>{
@@ -38,5 +46,9 @@ export const incrementFav=()=>{
                     
           }
 }
+
+
+
+
 
 

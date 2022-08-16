@@ -1,4 +1,4 @@
-import { ADD_TO_CART,REMOVE_CART ,REMOVE_CART_ALL,USER_LOGEDIN,ADD_FAV} from "../Constants/ActionType";
+import { ADD_TO_CART,REMOVE_CART ,REMOVE_CART_ALL,USER_LOGEDIN,ADD_FAV,INCREMENT_CART} from "../Constants/ActionType";
 
 const initialCounter={
           count:0,
@@ -10,22 +10,23 @@ const counterReducer =(state=initialCounter,action)=>{
           console.log(action.payload,'reducers datas')
           switch(action.type){
                     case ADD_TO_CART:
-                        const ItemIndex=state.product.findIndex((item)=>item.id === action.payload.id)
-                        if (ItemIndex >= 0){
-                              state.product[ItemIndex].start_quantity+=1
-                        }
-                        else{
-                              const temp={...action.payload,start_quantity:1}
+                        // const ItemIndex=state.product.findIndex((item)=>item.id === action.payload.id)
+                        // if (ItemIndex >= 0){
+                        //       state.product[ItemIndex].start_quantity+=1
+                        // }
+                        // else{
+                        //       const temp={...action.payload,start_quantity:1}
+                        //       return{
+                        //             //     count:state.count+1,
+                        //                 product:[...state.product,temp]
+                        //       }
+
+                        // }
+                        const temp={...action.payload,quantity:1}
                               return{
-                                    //     count:state.count+1,
+                                        count:state.count+1,
                                         product:[...state.product,temp]
                               }
-
-                        }
-                              // return{
-                              //           count:state.count+1,
-                              //           product:[...state.product,action.payload]
-                              // }
 
                     case REMOVE_CART:
                               const newProduct = state.product.filter((item) =>
@@ -56,6 +57,16 @@ const counterReducer =(state=initialCounter,action)=>{
                                     ...state,
                                     count:state.count+1,
                         }
+
+
+
+                  case INCREMENT_CART:
+                        let index = state.product.findIndex(obj => obj.id === action.payload.id)
+
+                        if (index >= 0) {
+                              state.product[index].quantity = (state.product[index].quantity | 0) + 1     
+                        }
+                              return index
                     default:
                               return state;
           }

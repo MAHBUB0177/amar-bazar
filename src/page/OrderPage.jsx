@@ -91,7 +91,7 @@ const removeItem=(product)=>{
                                   <tr>
                                     <td><img src={item?.image} alt="" style={{  height: '80px', width: '70px' ,clipPath:'circle()'}}></img></td>
                                     <td>{item?.category.substring(0,6)}</td>
-                                    <td>{item?.start_quantity}</td>
+                                    <td>{item?.quantity}</td>
                                     <td>{item?.price}TK</td>
                                     <td><IconButton ><span style={{color:'red'}} onClick={()=>removeItem(item)}><DeleteIcon/></span></IconButton></td> 
 

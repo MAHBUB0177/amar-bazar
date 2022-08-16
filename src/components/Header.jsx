@@ -18,7 +18,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
-import { decrementCounter,incrementCounter } from '../Service/Action/Action';
+import { decrementCounter,incrementCounter ,incrementCart} from '../Service/Action/Action';
 import { width } from '@mui/system';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
@@ -32,6 +32,11 @@ import { handelSignOut } from '../utils/LoginFirebaseManager';
 
 export const Header = () => {
   const product=useSelector(state=>state.product)
+  let total=0;
+  for(let i=0;i<product.length;i++){
+    let prod=product[i]
+    total+=prod.price;
+  }
   console.log(product,'incerement cart data qty')
 
   const handelDecrement=(item_id)=>{
@@ -52,12 +57,14 @@ export const Header = () => {
     let index = product.findIndex(obj => obj.id === data.id)
 
     if (index >= 0) {
-      product[index].quantity = (product[index].quantity | 0) + 1     
+      product[index].quantity = (product[index].quantity) + 1     
     }
     
-    return index;
     
   }
+
+
+  
 
 
       const[over,setOver]=useState(false)
@@ -73,11 +80,7 @@ export const Header = () => {
       const [isDrowerOpen, setisDrowerOpen] = useState(false)
       const domain = "https://availtrade.com/public/images/";
       
-  let total=0;
-  for(let i=0;i<product.length;i++){
-    let prod=product[i]
-    total+=prod.price;
-  }
+ 
   // for(let i=0;i<product.length;i++){
   //  let prod=product[i]
   //   total=total+Number(prod.product_price);
@@ -93,10 +96,7 @@ export const Header = () => {
             document.getElementsByClassName('navbar-links')[0].classList.toggle('active')
        }
      
-  //      var togglefunctionbar=()=>{
-  //       document.getElementsByClassName('navbar-links')[0].classList.toggle('deactive')
-  //  }
-
+  
       const removeItem=(product)=>{
         console.log(product,'product id')
         dispatch(decrementCounter(product))
@@ -244,7 +244,7 @@ export const Header = () => {
                                     <td ><b>{item?.category}</b><br/><CurrencyRupeeIcon/>{item?.price}</td>
                                     <td><div className='input-group' style={{width:'100px'}}>
                                         <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelDecrement(item.id)}>-</button>
-                                        <div className='form-control text-center' style={{width:'15px'}}>{item?.start_quantity}</div>
+                                        <div className='form-control text-center' style={{width:'15px'}}>{item?.quantity}</div>
                                         <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelincrement(item)}>+</button>
                                       </div></td>
                                     <td><IconButton ><span style={{color:'red'}} onClick={()=>removeItem(item)}><DeleteIcon/></span></IconButton></td> 
