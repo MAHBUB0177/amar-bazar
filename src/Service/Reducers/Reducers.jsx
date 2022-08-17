@@ -10,24 +10,29 @@ const counterReducer =(state=initialCounter,action)=>{
           console.log(action.payload,'reducers datas')
           switch(action.type){
                     case ADD_TO_CART:
-                        // const ItemIndex=state.product.findIndex((item)=>item.id === action.payload.id)
-                        // if (ItemIndex >= 0){
-                        //       state.product[ItemIndex].start_quantity+=1
-                        // }
-                        // else{
-                        //       const temp={...action.payload,start_quantity:1}
+                        const IteamIndex = state.product.findIndex((iteam)=> iteam.id === action.payload.id);
+
+                        if(IteamIndex >= 0){
+                            state.product[IteamIndex].qnty +=1
+                            return {
+                                ...state,
+                                product:[...state.product]
+                            }
+                        }else{
+                            const temp = {...action.payload,qnty:1}
+                             return {
+                                ...state,
+                                product: [...state.product, temp]
+                            }
+                        }
+                
+                      
+                        // const temp={...action.payload,quantity:1}
                         //       return{
-                        //             //     count:state.count+1,
+                        //                 count:state.count+1,
                         //                 product:[...state.product,temp]
                         //       }
-
-                        // }
-                        const temp={...action.payload,quantity:1}
-                              return{
-                                        count:state.count+1,
-                                        product:[...state.product,temp]
-                              }
-
+//remove single item cart:
                     case REMOVE_CART:
                               const newProduct = state.product.filter((item) =>
                   
@@ -39,7 +44,7 @@ const counterReducer =(state=initialCounter,action)=>{
                                          product:newProduct
                                    }
                   
-
+//remove full cart:
                   case REMOVE_CART_ALL:
                         return{
                                     ...state,
@@ -51,7 +56,7 @@ const counterReducer =(state=initialCounter,action)=>{
                                     ...state,
                                     islogedin:true
                         }
-
+//add fav inc
                   case ADD_FAV:
                         return{
                                     ...state,
@@ -59,15 +64,27 @@ const counterReducer =(state=initialCounter,action)=>{
                         }
 
 
-
-                  case INCREMENT_CART:
-                        let index = state.product.findIndex(obj => obj.id === action.payload.id)
-
-                        if (index >= 0) {
-                              state.product[index].quantity = (state.product[index].quantity | 0) + 1     
+//decrease individual item
+                  case "RMV_ONE":
+                        const IteamIndex_dec = state.product.findIndex((iteam)=> iteam.id === action.payload.id);
+               
+                        if(state.product[IteamIndex_dec].qnty >= 1){
+                            const dltiteams = state.product[IteamIndex_dec].qnty -= 1
+                            console.log([...state.product,dltiteams]);
+            
+                            return {
+                                ...state,
+                                product:[...state.product]
+                            }
+                        }else if(state.product[IteamIndex_dec].qnty === 1 ){
+                            const data = state.product.filter((el)=>el.id !== action.payload);
+            
+                            return {
+                                ...state,
+                                product:data
+                            }
                         }
-                              return index
-                    default:
+                  default:
                               return state;
           }
 }

@@ -18,7 +18,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
-import { decrementCounter,incrementCounter ,incrementCart} from '../Service/Action/Action';
+import { decrementCounter,incrementCounter ,REMOVE} from '../Service/Action/Action';
 import { width } from '@mui/system';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
@@ -31,54 +31,47 @@ import { handelSignOut } from '../utils/LoginFirebaseManager';
 
 
 export const Header = () => {
+  const dispatch=useDispatch()
   const product=useSelector(state=>state.product)
   let total=0;
   for(let i=0;i<product.length;i++){
     let prod=product[i]
-    total+=prod.price;
+    total+=prod.price * prod.qnty;
   }
   console.log(product,'incerement cart data qty')
 
-  const handelDecrement=(item_id)=>{
+  const handelDecrement=(item)=>{
+    dispatch(REMOVE(item))
     console.log('test')
-    console.log('data test',item_id)
-    let index = product.findIndex(obj => obj.id === item_id)
+    // console.log('data test',item_id)
+    // let index = product.findIndex(obj => obj.id === item_id)
 
-    if (index >= 0) {
-      product[index].quantity = (product[index].quantity | 0) - 1     
-    }
+    // if (index >= 0) {
+    //   product[index].quantity = (product[index].quantity | 0) - 1     
+    // }
 
   }
   
 
   const handelincrement=(data)=>{
-  //  dispatch(incrementCounter(data))
-    console.log('data test',data)
-    let index = product.findIndex(obj => obj.id === data.id)
-
-    if (index >= 0) {
-      product[index].quantity = (product[index].quantity) + 1     
-    }
-    
-    
+   dispatch(incrementCounter(data))
   }
 
 
   
 
 
-      const[over,setOver]=useState(false)
-      const[text,setText]=useState('')
-     function submitText(e){
-      var frm=document.getElementsByName('textform')[0];
-      frm.submit()
-      frm.reset();
-      e.preventDefault()
-     }
+  const[over,setOver]=useState(false)
+  const[text,setText]=useState('')
+    function submitText(e){
+    var frm=document.getElementsByName('textform')[0];
+    frm.submit()
+    frm.reset();
+    e.preventDefault()
+    }
 
-      const dispatch=useDispatch()
-      const [isDrowerOpen, setisDrowerOpen] = useState(false)
-      const domain = "https://availtrade.com/public/images/";
+  const [isDrowerOpen, setisDrowerOpen] = useState(false)
+  const domain = "https://availtrade.com/public/images/";
       
  
   // for(let i=0;i<product.length;i++){
@@ -92,27 +85,19 @@ export const Header = () => {
  
 
 
-       var togglefunction=()=>{
-            document.getElementsByClassName('navbar-links')[0].classList.toggle('active')
-       }
+  var togglefunction=()=>{
+      document.getElementsByClassName('navbar-links')[0].classList.toggle('active')
+  }
      
   
-      const removeItem=(product)=>{
-        console.log(product,'product id')
-        dispatch(decrementCounter(product))
-        notify()
+  const removeItem=(product)=>{
+    console.log(product,'product id')
+    dispatch(decrementCounter(product))
+    notify()
 
-      }
+  }
 
-      var styling={
-            fontSize:'20px',
-            paddingRight:'30px',
-            color:'white',
-            
-            paddingTop:'13px'
-  
-            
-          }
+     
   return (
     <div style={{marginLeft:'0px',marginRight:'0px'}}>
             <ToastContainer/>
@@ -242,12 +227,13 @@ export const Header = () => {
                                   <tr>
                                     <td><img src={item?.image} alt="" style={{  height: '50px', width: '50px' ,clipPath:'circle()'}}></img></td>
                                     <td ><b>{item?.category}</b><br/><CurrencyRupeeIcon/>{item?.price}</td>
-                                    <td><div className='input-group' style={{width:'100px'}}>
-                                        <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelDecrement(item.id)}>-</button>
-                                        <div className='form-control text-center' style={{width:'15px'}}>{item?.quantity}</div>
+                                    <td><div className='input-group' style={{width:'100px',marginTop:'15px'}}>
+                                        {/* <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelDecrement(item)}>-</button> */}
+                                        <button type='button' className='input-group-text' style={{width:'15px'}} onClick={item?.qnty <=1 ? ()=> removeItem(item): ()=>handelDecrement(item)}>-</button>
+                                        <div className='form-control text-center' style={{width:'15px'}}>{item?.qnty}</div>
                                         <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelincrement(item)}>+</button>
                                       </div></td>
-                                    <td><IconButton ><span style={{color:'red'}} onClick={()=>removeItem(item)}><DeleteIcon/></span></IconButton></td> 
+                                    <td><IconButton ><span style={{color:'red',paddingBottom:"12px"}} onClick={()=>removeItem(item)}><DeleteIcon/></span></IconButton></td> 
 
                                   </tr>
                                  

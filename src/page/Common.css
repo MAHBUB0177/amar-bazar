@@ -247,3 +247,21 @@ a.view-all-btn {
     border: 3px solid #a83333;
     color: tomato;
 }
+
+
+/* //// */
+
+.addCard {
+    height: 30px;
+    width: 50px;
+}
+
+.addCard:hover {
+    background-color: green;
+}
+
+.svgimg {
+    color: tomato;
+    height: 80px;
+    width: 60px;
+}

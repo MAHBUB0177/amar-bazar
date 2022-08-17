@@ -33,7 +33,7 @@ const OrderPage = () => {
   let total=0;
   for (let i=0;i<cartItem.length;i++){
     let prod=cartItem[i]
-    total=total+prod.price
+    total=total+prod.price * prod.qnty
   }
   // for (let i=0;i<cartItem.length;i++){
   //   let prod=cartItem[i];
@@ -91,8 +91,8 @@ const removeItem=(product)=>{
                                   <tr>
                                     <td><img src={item?.image} alt="" style={{  height: '80px', width: '70px' ,clipPath:'circle()'}}></img></td>
                                     <td>{item?.category.substring(0,6)}</td>
-                                    <td>{item?.quantity}</td>
-                                    <td>{item?.price}TK</td>
+                                    <td>{item?.qnty}</td>
+                                    <td>{item?.price * item?.qnty}TK</td>
                                     <td><IconButton ><span style={{color:'red'}} onClick={()=>removeItem(item)}><DeleteIcon/></span></IconButton></td> 
 
                                   </tr>

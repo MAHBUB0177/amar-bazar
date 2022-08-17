@@ -22,6 +22,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 export const Shop = () => {
   const [rating, setRating] = useState(0) // initial rating value
+  const [items, setItems] = useState(false) // initial rating value
 
   // Catch Rating value
   const handleRating = (rate) => {
@@ -56,6 +57,7 @@ export const Shop = () => {
   
 
   const addToCart =(product)=>{
+    console.log(product,'=====')
     dispatch(incrementCounter(product))
     notify()
    }
@@ -82,6 +84,9 @@ export const Shop = () => {
        };
        getAutomobile();
      }, []);
+
+
+   
 
   
  
@@ -115,10 +120,26 @@ export const Shop = () => {
             <Card.Text>
              <h6 style={{fontSize:'15px'}}> {item?.category?.substring(0, 20)}</h6> 
              <p style={{fontSize:'14px',}}><span style={{color:'red',fontSize:'15px',marginRight:'40px'}}><CurrencyRupeeIcon/>{item?.price}Tk</span><span style={{color:'#d8c8db',marginLeft:'40px',}}  onClick={()=>addFav()}><FavoriteIcon /></span> </p>
+             {/* <p style={{fontSize:'10px'}}><span style={{color:'goldenrod'}}><StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarIcon/></span></p> */}
+             
              <CardActions style={{justifyContent: "center", }}>
             <Button variant="contained" color="secondary" style={{marginBottom:'10px'}} onClick={()=>addToCart(item)}>
             AddToCart
             </Button>
+{/* <Card  className='addCard'  id='cardid'>
+<p onClick={()=>setItems(!items)}><span><svg style={{color:'tomato',height:'25px',width:'40px'}} stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M460 160h-88v-12A116.13 116.13 0 00258.89 32h-5.78A116.13 116.13 0 00140 148v12H52a4 4 0 00-4 4v300a16 16 0 0016 16h384a16 16 0 0016-16V164a4 4 0 00-4-4zm-280-11c0-41.84 33.41-76.56 75.25-77A76.08 76.08 0 01332 148v12H180zm156 187h-64v64h-32v-64h-64v-32h64v-64h32v64h64z"></path></svg></span></p>
+
+</Card> */}
+         
+{/* { items &&
+            
+            <div className='input-group' style={{width:'100px'}} id='divShow' >
+            <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>''}>-</button>
+            <div className='form-control text-center' style={{width:'15px'}}>{prod?.start_quantity}</div>
+            <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>addToCart(prod)}>+</button>
+           </div>
+            } */}
+
             </CardActions>
             </Card.Text>
           </Card.Body>
@@ -155,18 +176,15 @@ export const Shop = () => {
     
             <p style={{fontSize:'25px',color:'tomato'}}><b><CurrencyRupeeIcon/>{prod?.price}TK</b></p>
             
-            <Button variant="contained" color='primary' style={{justifyContent:'between' }} >
-              <span>-</span><span style={{marginLeft:'4px',}}>{prod?.start_quantity?.substring(0,1)}</span><span style={{marginLeft:'4px',}}>+</span>
-            </Button>
+        {/* <div style={{display:'flex',flexWrap:'wrap',flex:'1',position:'relative'}}>
+            <div className='input-group' style={{width:'100px'}}>
+            <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>''}>-</button>
+            <div className='form-control text-center' style={{width:'15px'}}>{prod?.start_quantity}</div>
+            <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>addToCart(prod)}>+</button>
+           </div> */}
 
-            {/* <div className='mt-5 d-flex justify-content-between align-item-center' style={{cursor:'pointer',background:'gray',width:'100px'}}> 
-               <span style={{fontSize:'24'}}>-</span>
-              <span style={{fontSize:'24'}}>{prod?.start_quantity}</span>
-              <span style={{fontSize:'24'}}>+</span>
-
-            </div> */}
-
-            <Button variant="contained"  style={{marginLeft:'4px',background:'#1a913a'}} onClick={()=>addToCart(prod)}>Add Cart</Button>
+            <Button variant="contained"  style={{marginLeft:'4px',background:'#1a913a',width:'150px'}} onClick={()=>addToCart(prod)}>Add To Cart</Button>
+        {/* </div> */}
             <p style={{marginTop:'4px',fontSize:'20px'}}>Count:{prod?.rating?.count}</p>
 
          
