@@ -176,14 +176,16 @@ export const Authenticaton = () => {
                     <br/>
                     <br/>
 
+
+                    <Button  variant='contained' color='primary'  onClick={handleGoogleSignIn}>
+                                Google Login
+                    </Button> 
+                   
+                    <b>OR</b>
                     <Button  variant='contained' color='secondary'  onClick={handelFbsignIn}>
                                 Facebook Login
                     </Button> 
-                    <b>OR</b>
-
-                       <Button  variant='contained' color='primary'  onClick={handleGoogleSignIn}>
-                                Google Login
-                    </Button> 
+                      
                         </>
                 }
             </Grid>

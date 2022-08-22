@@ -28,7 +28,6 @@ const OrderPage = () => {
 
 
   // total cout":
-
   const cartItem=useSelector(state=>state.product)
   let total=0;
   for (let i=0;i<cartItem.length;i++){
@@ -41,15 +40,15 @@ const OrderPage = () => {
   // }
   var tax=Number(total/10);
 
-  //toast message:
 
+  //toast message:
   const notify = () =>   toast.warning("Product Remove To Cart!",
    {
     position: toast.POSITION.TOP_CENTER,
   });
 
-//remove cart:
 
+//remove cart:
 const removeItem=(product)=>{
   dispatch(decrementCounter(product))
   notify()

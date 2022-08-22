@@ -31,6 +31,7 @@ import { handelSignOut } from '../utils/LoginFirebaseManager';
 
 
 export const Header = () => {
+
   const dispatch=useDispatch()
   const product=useSelector(state=>state.product)
   let total=0;
@@ -38,11 +39,9 @@ export const Header = () => {
     let prod=product[i]
     total+=prod.price * prod.qnty;
   }
-  console.log(product,'incerement cart data qty')
 
   const handelDecrement=(item)=>{
     dispatch(REMOVE(item))
-    console.log('test')
     // console.log('data test',item_id)
     // let index = product.findIndex(obj => obj.id === item_id)
 
@@ -57,13 +56,9 @@ export const Header = () => {
    dispatch(incrementCounter(data))
   }
 
-
-  
-
-
   const[over,setOver]=useState(false)
   const[text,setText]=useState('')
-    function submitText(e){
+  function submitText(e){
     var frm=document.getElementsByName('textform')[0];
     frm.submit()
     frm.reset();
@@ -91,7 +86,6 @@ export const Header = () => {
      
   
   const removeItem=(product)=>{
-    console.log(product,'product id')
     dispatch(decrementCounter(product))
     notify()
 
@@ -204,7 +198,7 @@ export const Header = () => {
                           <h2 style={{marginTop:'50%',color:'red'}}>  Your Crad Is Empty <LocalFireDepartmentIcon/></h2>
                       </div> : <div>
 
-                      <p style={{ textAlign: 'left' }}> Your Cart <button type="button"  onClick={()=>setisDrowerOpen(false)} style={{border:'none',marginLeft:'200px'}}>
+                      <p style={{ textAlign: 'left' ,color:'tomato'}}> Your Cart <button type="button"  onClick={()=>setisDrowerOpen(false)} style={{border:'none',marginLeft:'200px'}}>
                        <ClearIcon/>
                        </button></p>
 
