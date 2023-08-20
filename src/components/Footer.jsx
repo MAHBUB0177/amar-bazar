@@ -7,12 +7,11 @@ export const Footer = () => {
   <footer className="site__footer">
             <div className="site-footer">
                 <div className="container">
-                    <div className="site-footer__widgets">
+                    {/* <div className="site-footer__widgets">
                         <div className="row">
                             <div className="col-12 col-md-6 col-lg-4">
                                 <div className="site-footer__widget footer-contacts">
                                     <h5 className="footer-contacts__title">Contact Us</h5>
-                                    {/* <hr/> */}
                                     <div className="footer-contacts__text">Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat tellus.</div>
                                     <ul className="footer-contacts__contacts">
@@ -31,7 +30,6 @@ export const Footer = () => {
                             <div className="col-6 col-md-3 col-lg-2">
                                 <div className="site-footer__widget footer-links ">
                                     <h5 className="footer-links__title">Information</h5>
-                                    {/* <hr/> */}
                                     <ul className="footer-links__list divfooter">
                                     <h6>Help Center</h6>
                                     <h6>Contact Us</h6>
@@ -48,7 +46,6 @@ export const Footer = () => {
                             <div className="col-6 col-md-3 col-lg-2">
                                 <div className="site-footer__widget footer-links">
                                     <h5 className="footer-links__title">My Account</h5>
-                                    {/* <hr/> */}
                                     <ul className="footer-links__list divfooter" >
                                     <h6>Store Location</h6>
                                     <h6>Order History</h6>
@@ -61,7 +58,6 @@ export const Footer = () => {
                             <div className="col-12 col-md-12 col-lg-4">
                                 <div className="site-footer__widget footer-newsletter">
                                     <h5 className="footer-newsletter__title">Newsletter</h5>
-                                    {/* <hr/> */}
                                     <div className="footer-newsletter__text">Praesent pellentesque volutpat ex, vitae auctor
                                         lorem pulvinar mollis felis at lacinia.</div>
 
@@ -79,7 +75,56 @@ export const Footer = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
+
+<div class="bg-gray-100">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6  text-gray-800 flex flex-wrap justify-center flex justify-between">
+        <div class="p-5">
+            <div class="text-xs uppercase text-gray-500 font-medium">Home</div>
+            <a class="my-3 block" href="/#">Services <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">Products <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">About Us <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">Pricing <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">Partners <span class="text-teal-600 text-xs p-1">New</span>
+            </a>
+        </div>
+        <div class="p-5">
+            <div class="text-xs uppercase text-gray-500 font-medium">Resources</div>
+
+            <a class="my-3 block" href="/#">Documentation <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">Tutorials <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">Support <span class="text-teal-600 text-xs p-1">New</span>
+            </a>
+        </div>
+        <div class="p-5">
+            <div class="text-xs uppercase text-gray-500 font-medium">Support</div>
+
+            <a class="my-3 block" href="/#">Help Center <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">Privacy Policy <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">Conditions <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+        </div>
+        <div class="p-5">
+            <div class="text-xs uppercase text-gray-500 font-medium">Contact us</div>
+
+            <a class="my-3 block" href="/#">XXX XXXX, Floor 4 San Francisco, CA
+                <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+
+            <a class="my-3 block" href="/#">contact@company.com
+                <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+        </div>
+    </div>
+</div>
                     <div class="site-footer__bottom">
                     <div className=' d-flex' style={{backgroundColor:'#f2fafa',height:'140px',borderRadius:'5px',borderTop:'0.5px solid #d7e0e0'}}>
                         <div className='col-md-4 logoimg'>

@@ -42,6 +42,11 @@ export const About = () => {
 
           <div className='row' style={{paddingTop:'20px',display:'flex'}}>
             <div className='col-md-7'>
+            <div class="text-5xl font-extrabold ...">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+            Hello world
+            </span>
+            </div>
               <h2>Welcome to our AmarBazar</h2>
               <p style={{fontSize:'18px'}}>
               Holisticly seize parallel metrics and functional ROI. Seamlessly revolutionize error-free internal or "organic" sources before effective scenarios. Progressively incentivize state of the art applications for efficient intellectual capital. Credibly leverage existing distinctive mindshare through cutting-edge schemas. Proactively procrastinate team building paradigms coordinate client-centric total transparent internal.
