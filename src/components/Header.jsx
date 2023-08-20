@@ -25,6 +25,7 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { handelSignOut } from '../utils/LoginFirebaseManager';
+import { notifyError } from './common/notifySuccess';
 
 
 
@@ -73,10 +74,10 @@ export const Header = () => {
   //  let prod=product[i]
   //   total=total+Number(prod.product_price);
   // }
-  const notify = () =>   toast.warning("Product Remove To Cart!",
-  {
-   position: toast.POSITION.TOP_CENTER,
- });
+//   const notify = () =>   toast.warning("Product Remove To Cart!",
+//   {
+//    position: toast.POSITION.TOP_CENTER,
+//  });
  
 
 
@@ -87,13 +88,13 @@ export const Header = () => {
   
   const removeItem=(product)=>{
     dispatch(decrementCounter(product))
-    notify()
+    notifyError()
 
   }
 
      
   return (
-    <div style={{marginLeft:'0px',marginRight:'0px'}}>
+    <div style={{marginLeft:'0px',marginRight:'0px'}} className='top-0 w-[100%] fixed z-50 '>
             <ToastContainer/>
             <nav className='navbar'>
                <Link to='/' style={{textDecoration:'none'}}>
@@ -220,7 +221,7 @@ export const Header = () => {
                                 product?.map(item =>
                                   <tr>
                                     <td><img src={item?.image} alt="" style={{  height: '50px', width: '50px' ,clipPath:'circle()'}}></img></td>
-                                    <td ><b>{item?.category}</b><br/><CurrencyRupeeIcon/>{item?.price}</td>
+                                    <td ><b>{item?.category}</b><br/><CurrencyRupeeIcon/>{item?.price * item?.qnty} </td>
                                     <td><div className='input-group' style={{width:'100px',marginTop:'15px'}}>
                                         {/* <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelDecrement(item)}>-</button> */}
                                         <button type='button' className='input-group-text' style={{width:'15px'}} onClick={item?.qnty <=1 ? ()=> removeItem(item): ()=>handelDecrement(item)}>-</button>
@@ -255,7 +256,7 @@ export const Header = () => {
                                    <Button variant="contained" color="info" style={{ width: '160px', marginTop: '20px' }} onClick={()=>setisDrowerOpen(false)}>Checkout</Button>
 
                               </div>
-                              </Link>
+                          </Link>
                          </div>
                       </div>
                       }

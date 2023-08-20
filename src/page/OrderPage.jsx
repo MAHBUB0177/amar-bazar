@@ -21,6 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import {   Container, Nav, Table } from 'react-bootstrap';
 import { TabTitle } from '../utils/FunctionTitle';
+import { notifyError } from '../components/common/notifySuccess';
 const OrderPage = () => {
   TabTitle('Amar Bazar | OrderPage')
   const domain = "https://availtrade.com/public/images/";
@@ -40,18 +41,10 @@ const OrderPage = () => {
   // }
   var tax=Number(total/10);
 
-
-  //toast message:
-  const notify = () =>   toast.warning("Product Remove To Cart!",
-   {
-    position: toast.POSITION.TOP_CENTER,
-  });
-
-
 //remove cart:
 const removeItem=(product)=>{
   dispatch(decrementCounter(product))
-  notify()
+  notifyError()
 
 }
 

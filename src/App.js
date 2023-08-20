@@ -24,7 +24,10 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <div className='mb-[100px]'>
         <Header />
+
+        </div>
         <Routes>
 
           <Route path='/' element={<HomePage/>} />
