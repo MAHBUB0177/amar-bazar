@@ -15,7 +15,7 @@ export const Footer = () => {
           <rect x="14" y="1" width="7" height="6"></rect>
           <rect x="14" y="11" width="7" height="12"></rect>
         </svg>
-        <p class="ml-2 text-start text-xl font-bold tracking-wide text-gray-800 uppercase">Company</p>
+        <p class="ml-2 text-start text-xl font-bold tracking-wide text-gray-900 uppercase">Company</p>
       </a>
         <p class="text-sm text-gray-800">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
