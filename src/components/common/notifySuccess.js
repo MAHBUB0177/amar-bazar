@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export  const notifySuccess = () =>   toast.success("Product ADD To Cart!",
+export  const notifySuccess = ({title}) =>   toast.success(title,
 {
  position: toast.POSITION.TOP_CENTER,
 });
