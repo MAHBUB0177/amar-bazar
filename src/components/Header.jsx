@@ -41,8 +41,8 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const favCount = useSelector((state) => state.count,)
-  console.log(favCount, 'favCount3456789')
+  const favCount=useSelector((state)=>state.count,)
+  console.log(favCount,'favCount3456789')
   const product = useSelector((state) => state.product);
   let total = 0;
   for (let i = 0; i < product.length; i++) {
