@@ -11,11 +11,20 @@ const initialCounter = {
   count: 0,
   product: [],
   islogedin: false,
+  userAuth:{}
 };
 
 const counterReducer = (state = initialCounter, action) => {
   console.log(action.payload, "reducers datas");
   switch (action.type) {
+
+    case USER_LOGEDIN:
+      return {
+        ...state,
+        islogedin: true,
+        userAuth:action.payload
+      };
+
     case ADD_TO_CART:
       const IteamIndex = state.product.findIndex(
         (iteam) => iteam.id === action.payload.id
@@ -58,11 +67,7 @@ const counterReducer = (state = initialCounter, action) => {
         product: [],
       };
 
-    case USER_LOGEDIN:
-      return {
-        ...state,
-        islogedin: true,
-      };
+   
     //add fav inc
     case ADD_FAV:
       return {

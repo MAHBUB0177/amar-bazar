@@ -12,7 +12,7 @@ import { TabTitle } from '../utils/FunctionTitle';
  const CheckOut = () => {
      TabTitle('Amar Bazar | CheckOut')
     const dispatch=useDispatch()
-
+  
 
   const handelSubmit = event => {
     let phone = document.getElementById('phone').value;

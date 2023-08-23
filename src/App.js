@@ -4,13 +4,13 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+
 } from "react-router-dom";
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './page/HomePage';
 import OrderPage from './page/OrderPage';
-import { Shop } from './page/Shop';
-import { Banner } from './page/Banner';
+
 import CheckOut from './page/CheckOut';
 import { Authenticaton } from './components/Authenticaton';
 import PrivetRoute from './components/PrivetRoute';
@@ -18,13 +18,15 @@ import { Categoris } from './page/Categoris';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Page404 } from './components/Page404';
-import { Opening } from './page/Opening';
+
 
 function App() {
+
+
   return (
     <div className="App">
       <Router>
-        <div className='mb-[100px]'>
+        <div className='mb-[90px]'>
         <Header />
 
         </div>
@@ -46,8 +48,8 @@ function App() {
           <Route path='/*' element={<Page404/>}/>
         
         </Routes>
-        <Banner/>
-        <Opening/>
+        {/* <Banner/>
+        <Opening/> */}
         <Footer />
       </Router>
       

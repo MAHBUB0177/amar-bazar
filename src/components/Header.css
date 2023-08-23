@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #490e66;
+    /* background-color: #490e66; */
     color: #644F9C;
     width: 100%;
 }
@@ -38,9 +38,9 @@ body {
     display: block;
 }
 
-.navbar-links li:hover {
+/* .navbar-links li:hover {
     background-color: tomato;
-}
+} */
 
 .toggle-button {
     position: absolute;
@@ -56,11 +56,11 @@ body {
 .toggle-button .bar {
     height: 3px;
     width: 100%;
-    background-color: white;
+    background-color: black;
     border-radius: 10px;
 }
 
-@media (max-width:400px) {
+@media (max-width:425px) {
     .toggle-button {
         display: flex;
     }

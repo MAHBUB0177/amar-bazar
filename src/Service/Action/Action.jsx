@@ -7,6 +7,16 @@ import {
   INCREMENT_CART,
   RMV_ONE,
 } from "../Constants/ActionType";
+
+
+//login user navigate
+export const userlogin = (data) => {
+  return {
+    type: USER_LOGEDIN,
+    payload:data
+  };
+};
+
 //increment one item cart
 export const incrementCounter = (data) => {
   console.log(data, "action datas");
@@ -36,12 +46,7 @@ export const decrementCounterALL = () => {
     type: REMOVE_CART_ALL,
   };
 };
-//login user navigate
-export const userlogin = () => {
-  return {
-    type: USER_LOGEDIN,
-  };
-};
+
 
 //fav icon increment
 export const incrementFav = () => {

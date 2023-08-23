@@ -5,7 +5,7 @@ import Chip from "@mui/material/Chip";
 import { IconButton } from "@material-ui/core";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
@@ -28,8 +28,10 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Menu from "@mui/material/Menu";
 import {
   decrementCounter,
+  decrementCounterALL,
   incrementCounter,
   REMOVE,
+  userlogin,
 } from "../Service/Action/Action";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
@@ -41,9 +43,15 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 export const Header = () => {
   const dispatch = useDispatch();
-  const favCount=useSelector((state)=>state.count,)
-  console.log(favCount,'favCount3456789')
+  const favCount = useSelector((state) => state.count,)
   const product = useSelector((state) => state.product);
+  const userAuth = useSelector((state) => state.userAuth);
+
+  const [isDrowerOpen, setisDrowerOpen] = useState(false);
+  const [over, setOver] = useState(false);
+  const [text, setText] = useState("");
+
+  console.log(userAuth, 'userAuthheadr')
   let total = 0;
   for (let i = 0; i < product.length; i++) {
     let prod = product[i];
@@ -60,12 +68,16 @@ export const Header = () => {
     // }
   };
 
-  const handelincrement = (data) => {
-    dispatch(incrementCounter(data));
+
+  //logout function
+  const _handelLogout = () => {
+    console.log('first')
+    dispatch(userlogin({}))
+    dispatch(decrementCounterALL());
+    Navigate(`/`);
   };
 
-  const [over, setOver] = useState(false);
-  const [text, setText] = useState("");
+
   function submitText(e) {
     var frm = document.getElementsByName("textform")[0];
     frm.submit();
@@ -73,125 +85,94 @@ export const Header = () => {
     e.preventDefault();
   }
 
-  const [isDrowerOpen, setisDrowerOpen] = useState(false);
-  const domain = "https://availtrade.com/public/images/";
 
-  // for(let i=0;i<product.length;i++){
-  //  let prod=product[i]
-  //   total=total+Number(prod.product_price);
-  // }
-  //   const notify = () =>   toast.warning("Product Remove To Cart!",
-  //   {
-  //    position: toast.POSITION.TOP_CENTER,
-  //  });
-
+  //toggole function
   var togglefunction = () => {
     document
       .getElementsByClassName("navbar-links")[0]
       .classList.toggle("active");
   };
-
+  //add cart
+  const handelincrement = (data) => {
+    dispatch(incrementCounter(data));
+  };
+  //remove cart 
   const removeItem = (product) => {
     dispatch(decrementCounter(product));
-    notifyError();
+    notifyError('Item Remove From Cart');
   };
 
   return (
-    <div
-      style={{ marginLeft: "0px", marginRight: "0px" }}
-      className="top-0 w-[100%] fixed z-50 "
-    >
+    <div className="top-0 w-[100%] fixed z-50 shadow-lg">
       <ToastContainer />
-      <nav className="navbar">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <div
-            className="brand-title"
-            style={{ paddingLeft: "80px", color: "#FF6F00" }}
-          >
-            <span style={{ marginRight: "5px", marginBottom: "5px" }}>
-              <ShoppingBagIcon />
-            </span>
-            Amar Bazar
-          </div>
-        </Link>
 
-        <Paper className="opening">
-          <Form name="textform" >
-            <InputBase className="bg-white w-[280px] rounded-sm h-[30px] p-2"
-              type="text"
-              placeholder="search.."
-              onChange={(e) => {
-                setText(e.target.value);
-              }}
-            />
-            <IconButton onClick={submitText}>
-              <SearchIcon />
-            </IconButton>
-          </Form>
-        </Paper>
+      <div className="navbar bg-white flex justify-between ">
+
+        <div>
+          {/* //logo */}
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <div className="brand-title color-[#FF6F00] md:pl-[20px]">
+              <span style={{ marginRight: "5px", marginBottom: "5px" }}>
+                <ShoppingBagIcon />
+              </span>
+              Amar Bazar
+            </div>
+          </Link></div>
+
+        <div>
+          {/* //search bar */}
+          <Paper className="opening shadow-md border-1  border-orange-300">
+            <Form name="textform" >
+              <InputBase className="bg-white  w-[250px] rounded-md h-[30px] p-2"
+                type="text"
+                placeholder="search.."
+                onChange={(e) => {
+                  setText(e.target.value);
+                }}
+              />
+              <IconButton onClick={submitText}>
+                <SearchIcon />
+              </IconButton>
+            </Form>
+          </Paper>
+        </div>
 
         <a className="toggle-button" onClick={togglefunction}>
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
         </a>
+
+
         <div className="navbar-links">
           <ul className="divHeader">
             <Link to="/item" style={{ textDecoration: "none" }}>
-              <li class="active">
-                <a
-                  style={{
-                    paddingRight: "20px",
-                    fontSize: "20px",
-                    color: "white",
-                    paddingTop: "15px",
-                  }}
-                >
+              <li className="active   md:pt-2 " onClick={togglefunction}>
+                <a className="text-[20px] text-purple-800 font-medium hover:bg-orange-300 hover:rounded-md hover:text-white">
                   Category
                 </a>
               </li>
             </Link>
 
             <Link to="/about" style={{ textDecoration: "none" }}>
-              <li>
-                <a
-                  style={{
-                    paddingRight: "20px",
-                    fontSize: "20px",
-                    color: "white",
-                    paddingTop: "15px",
-                  }}
-                >
+              <li className="md:pt-2" onClick={togglefunction}>
+                <a className="text-[20px] text-purple-800 font-medium  hover:bg-orange-300 hover:rounded-md hover:text-white">
                   About
                 </a>
               </li>
             </Link>
 
             <Link to="/contact" style={{ textDecoration: "none" }}>
-              <li>
-                <a
-                  style={{
-                    paddingRight: "20px",
-                    fontSize: "20px",
-                    color: "white",
-                    paddingTop: "15px",
-                  }}
-                >
+              <li className="md:pt-2" onClick={togglefunction}>
+                <a className="text-[20px] text-purple-800 font-medium hover:bg-orange-300 hover:rounded-md hover:text-white">
                   Contact
                 </a>
               </li>
             </Link>
 
             <Link to="#" style={{ textDecoration: "none" }}>
-              <li>
-                <a
-                  style={{
-                    paddingRight: "20px",
-                    fontSize: "20px",
-                    color: "white",
-                    paddingTop: "15px",
-                  }}
-                >
+              <li className="md:pt-2" onClick={togglefunction}>
+                <a className="text-[20px] text-purple-800 font-semibold pt-2 hover:bg-orange-300 hover:rounded-md hover:text-white">
                   <span>
                     Page
                     <KeyboardArrowDownIcon />
@@ -204,7 +185,7 @@ export const Header = () => {
                 {" "}
                 <strong>
                   <span>
-                    <IconButton style={{ color: "white", height: "50px" }}>
+                    <IconButton className="color-[#FF6F00] h-[50px] w-[50px] hover:bg-orange-300 hover:rounded-md hover:text-white" onClick={togglefunction}>
                       <Badge color="secondary" badgeContent={product.length} >
                         <FavoriteIcon />
                       </Badge>
@@ -219,9 +200,8 @@ export const Header = () => {
                 {" "}
                 <strong>
                   <span>
-                    <IconButton
-                      style={{ color: "white", height: "50px" }}
-                      onClick={() => setisDrowerOpen(true)}
+                    <IconButton className="color-[#FF6F00] h-[50px] w-[50px] hover:bg-orange-300 hover:rounded-md hover:text-white"
+                      onClick={() => {setisDrowerOpen(true);togglefunction()}}
                     >
                       <Badge badgeContent={product.length} color="secondary">
                         <ShoppingCartIcon />
@@ -237,9 +217,8 @@ export const Header = () => {
                 {" "}
                 <strong>
                   <span>
-                    <IconButton
-                      style={{ color: "white", height: "50px", width: "50px" }}
-                      onClick={() => setOver(true)}
+                    <IconButton className="color-[#FF6F00] h-[50px] w-[50px] hover:bg-orange-300 hover:rounded-md hover:text-white"
+                      onClick={() => {setOver(true);togglefunction()}}
                     >
                       <AccountBoxIcon />
                     </IconButton>
@@ -249,7 +228,13 @@ export const Header = () => {
             </li>
           </ul>
         </div>
-      </nav>
+
+
+
+
+
+
+      </div>
       {/* //profile open */}
       {over && (
         <ClickAwayListener onClickAway={() => setOver(false)}>
@@ -266,7 +251,7 @@ export const Header = () => {
                   Login
                 </MenuItem>
               </Link>
-              <MenuItem onClick={() => setOver(false)}>
+              <MenuItem onClick={() => { setOver(false); _handelLogout() }}>
                 <span>
                   <LogoutIcon />
                 </span>
