@@ -17,7 +17,7 @@ import { notifySuccess } from "../components/common/notifySuccess";
 
 export const Shop = () => {
   const [Products, setProducts] = useState(null);
-  console.log(Products,'Products888888888')
+  console.log(Products, 'Products888888888')
   const [show, setShow] = useState(false);
   const [prod, setProd] = useState(null);
   const [rating, setRating] = useState(0); // initial rating value
@@ -32,10 +32,11 @@ export const Shop = () => {
   // const domain = "https://availtrade.com/public/images/";
 
   const handleClose = () => setShow(false);
-  const handleModal = () => setShow(true);
+  // const handleModal = () => setShow(true);
   const handleShow = (prod) => {
     setProd(prod);
-    handleModal();
+    // handleModal();
+    setShow(true)
   };
 
   //redux get product
@@ -71,21 +72,27 @@ export const Shop = () => {
     getAutomobile();
   }, []);
 
+
+
+
+
+
   return (
     <div className="bg-white mt-[20px]">
       <div className="container">
         <div className="mt-4 flex items-center justify-between">
           <span className="border-b w-1/5 lg:w-2/5"></span>
-          <a
-            href="#"
+          <p
             className="text-2xl font-medium  text-center text-gray-500 uppercase "
           >
             Discount Product
-          </a>
+          </p>
           <span className="border-b w-1/5 lg:w-2/5"></span>
         </div>
       </div>
 
+
+{/* //shoping card */}
       <section
         id="Projects"
         className="w-fit mt-[20px] mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-20 gap-x-14  mb-5"
@@ -98,14 +105,14 @@ export const Shop = () => {
                 alt="Product"
                 className="h-80 w-72 object-fill rounded-t-xl"
                 onClick={() => handleShow(item)}
-                
+
               />
               <div className="px-4 py-3 w-72">
                 <span className="text-gray-400 mr-3 uppercase text-xs">
                   Brand
                 </span>
                 <p className="text-lg font-bold text-black truncate block capitalize">
-                {item?.category}
+                  {item?.category}
                 </p>
                 <div className="flex items-center">
                   <p className="text-lg font-semibold text-black cursor-auto my-3">
@@ -116,7 +123,7 @@ export const Shop = () => {
                       $199
                     </p>
                   </del>
-                  <div className="ml-auto">
+                  <div className="ml-auto" onClick={() => addToCart(item)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -217,81 +224,54 @@ export const Shop = () => {
         ))}
       </div> */}
 
+
+{/* //open card details modal */}
       <div>
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton></Modal.Header>
-
-          <div className="row showmodal">
-            <div className="col-md-5">
-              <img
-                className="showimg"
-                src={prod?.image}
-                style={{
-                  height: "250px",
-                  width: "240px",
-                  paddingLeft: "10px",
-                  marginTop: "50px",
-                  marginBottom: "30px",
-                }}
-              ></img>
-            </div>
-            <div
-              className="col-md-7"
-              style={{ marginTop: "15px", paddingLeft: "60px" }}
-            >
-              <h4 style={{ color: "green" }}>
-                {prod?.category.substring(0, 14)}
-              </h4>
-              <Button
-                variant="contained"
-                style={{ background: "##91b39a", borderRadius: "50px" }}
-              >
-                in stock
-              </Button>
-              <br />
-              <span>
-                <p style={{ paddingRight: "10px", fontSize: "25px" }}>
-                  Rating:{prod?.rating?.rate}
-                  <span style={{ color: "goldenrod" }}>
-                    <StarIcon />
-                    <StarIcon />
-                    <StarIcon />
-                  </span>
-                </p>
-                <p style={{ paddingRight: "10px" }}>
-                  {prod?.description?.substring(0, 150)}
-                </p>
-              </span>
-
-              <p style={{ fontSize: "25px", color: "tomato" }}>
-                <b>
-                  <CurrencyRupeeIcon />
-                  {prod?.price}TK
-                </b>
-              </p>
-
-              {/* <div style={{display:'flex',flexWrap:'wrap',flex:'1',position:'relative'}}>
-            <div className='input-group' style={{width:'100px'}}>
-            <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>''}>-</button>
-            <div className='form-control text-center' style={{width:'15px'}}>{prod?.start_quantity}</div>
-            <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>addToCart(prod)}>+</button>
-           </div> */}
-
-              <Button
-                variant="contained"
-                style={{
-                  marginLeft: "4px",
-                  background: "#1a913a",
-                  width: "150px",
-                }}
-                onClick={() => addToCart(prod)}
-              >
-                Add To Cart
-              </Button>
-              {/* </div> */}
-              <p style={{ marginTop: "4px", fontSize: "20px" }}>
-                Count:{prod?.rating?.count}
-              </p>
+          <Modal.Header closeButton className="text-black"></Modal.Header>
+          <div class="flex-col md:flex-row justify-between  flex gap-4 items-start mx-4 py-12">
+            <div class="mx-auto">
+              <div>
+                <div class="flex bg-white rounded-lg shadow dark:bg-gray-800">
+                  <div class="relative flex-none w-24 md:w-48">
+                    <img src={prod?.image} alt="shopping image" class="absolute inset-0 object-fill w-full h-full rounded-lg" />
+                  </div>
+                  <form class="flex-auto p-6">
+                    <div class="flex flex-wrap">
+                      <h1 class="flex-auto text-xl font-semibold dark:text-gray-50">{prod?.category?.substring(0, 40)}</h1>
+                      <div class="text-xl font-semibold text-gray-500 dark:text-gray-300">${prod?.price}</div>
+                      <div><p style={{ paddingRight: "10px", fontSize: "12px" }}>
+                        {/* {prod?.rating?.rate} */}
+                        <span style={{ color: "goldenrod" }}>
+                          <StarIcon />
+                          <StarIcon />
+                          <StarIcon />
+                        </span>
+                      </p></div>
+                      <div class="flex-none w-full mt-2 text-sm font-medium text-gray-500 dark:text-gray-300"><Button
+                        variant="contained"
+                        style={{ background: "##91b39a", borderRadius: "50px" }}
+                      >
+                        in stock
+                      </Button>
+                      </div>
+                    </div>
+                    <div class="flex items-baseline mt-4 mb-6 text-gray-700 dark:text-gray-300">
+                      <div class="flex space-x-2">
+                        <label class="text-center"><input type="radio" class="flex items-center justify-center w-6 h-6 bg-gray-100 rounded-lg dark:bg-gray-600" name="size" value="xs" />XS</label><label class="text-center"><input type="radio" class="flex items-center justify-center w-6 h-6" name="size" value="s" />S</label><label class="text-center"><input type="radio" class="flex items-center justify-center w-6 h-6" name="size" value="m" />M</label><label class="text-center"><input type="radio" class="flex items-center justify-center w-6 h-6" name="size" value="l" />L</label><label class="text-center"><input type="radio" class="flex items-center justify-center w-6 h-6" name="size" value="xl" />XL</label>
+                      </div>
+                      <a href="#"
+                        class="hidden ml-auto text-sm text-gray-500 underline md:block dark:text-gray-300">Size
+                        Guide
+                      </a>
+                    </div>
+                    <div class="flex mb-4 text-sm font-medium">
+                      <button onClick={() => addToCart(prod)} type="button" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">ADD TO CART</button>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-300">Free shipping on all continental US orders.</p>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </Modal>
