@@ -52,14 +52,6 @@ export const Slider = () => {
        document.getElementById("hours").textContent = hours + "h";
        document.getElementById("minutes").textContent = minutes + "m";
        document.getElementById("seconds").textContent = seconds + "s";
-
-      //  // Display the result in the corresponding elements
-      //  document.getElementById("days1").textContent = days + "d";
-      //  document.getElementById("hours1").textContent = hours + "h";
-      //  document.getElementById("minutes1").textContent = minutes + "m";
-      //  document.getElementById("seconds1").textContent = seconds + "s";
-
-
        // If the count down is over, write some text 
        if (distance < 0) {
            clearInterval(x);

@@ -117,7 +117,8 @@ export const Header = () => {
               </span>
               Amar Bazar
             </div>
-          </Link></div>
+          </Link>
+        </div>
 
         <div>
           {/* //search bar */}
@@ -144,7 +145,7 @@ export const Header = () => {
         </a>
 
 
-        <div className="navbar-links">
+        <div className="navbar-links ">
           <ul className="divHeader">
             <Link to="/item" style={{ textDecoration: "none" }}>
               <li className="active   md:pt-2 " onClick={togglefunction}>
