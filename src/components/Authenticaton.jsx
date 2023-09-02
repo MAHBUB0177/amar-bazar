@@ -9,13 +9,11 @@ import 'firebase/compat/auth';
 import FirebaseConfig from '../utils/FirebaseConfig'
 import axios from 'axios';
 import { notifyError, notifySuccess } from './common/notifySuccess';
-import { useNavigate } from 'react-router';
 firebase.initializeApp(FirebaseConfig);
 
 export const Authenticaton = () => {
   TabTitle('Amar Bazar | Login')
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   //firebase authentication:
   // initializefirebase()
   // handleGoogleSignIn()
@@ -66,7 +64,6 @@ export const Authenticaton = () => {
     if(email ==='' || password === ''){
       return notifyError('User Name Or Password Missing')
     }
-
     await axios.post('https://dummyjson.com/auth/login', payload, {
       headers: {
         'Content-Type': 'application/json'
@@ -77,7 +74,6 @@ export const Authenticaton = () => {
           notifySuccess('User Successfully Logged In')
           window.location.href = '/checkout'
           dispatch(userlogin(response.data))
-          // navigate('/checkout')
         }
         console.log(response.data);
       })

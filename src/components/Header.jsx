@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import "./Header.css";
-import { Container, Nav, Table, Form } from "react-bootstrap";
-import Chip from "@mui/material/Chip";
+import { Table, Form } from "react-bootstrap";
 import { IconButton } from "@material-ui/core";
-import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link, Navigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
-  Card,
   MenuItem,
   ClickAwayListener,
   Button,
@@ -25,48 +22,39 @@ import ClearIcon from "@mui/icons-material/Clear";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import DeleteIcon from "@mui/icons-material/Delete";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Menu from "@mui/material/Menu";
 import {
-  decrementCounter,
   decrementCounterALL,
-  incrementCounter,
-  REMOVE,
   userlogin,
 } from "../Service/Action/Action";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { handelSignOut } from "../utils/LoginFirebaseManager";
-import { notifyError } from "./common/notifySuccess";
+
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { handelDecrement, handelincrement, removeItem } from "./common/commonfunction";
 
 export const Header = () => {
   const dispatch = useDispatch();
   const favCount = useSelector((state) => state.count,)
   const product = useSelector((state) => state.product);
-  const userAuth = useSelector((state) => state.userAuth);
+  const user = useSelector(state => state.userAuth)
+  console.log(user,'userauthdsta7890-')
+
 
   const [isDrowerOpen, setisDrowerOpen] = useState(false);
   const [over, setOver] = useState(false);
   const [text, setText] = useState("");
 
-  console.log(userAuth, 'userAuthheadr')
+
+  console.log(user, 'userAuthheadr')
   let total = 0;
   for (let i = 0; i < product.length; i++) {
     let prod = product[i];
     total += prod.price * prod.qnty;
   }
 
-  const handelDecrement = (item) => {
-    dispatch(REMOVE(item));
-    // console.log('data test',item_id)
-    // let index = product.findIndex(obj => obj.id === item_id)
 
-    // if (index >= 0) {
-    //   product[index].quantity = (product[index].quantity | 0) - 1
-    // }
-  };
 
 
   //logout function
@@ -92,15 +80,7 @@ export const Header = () => {
       .getElementsByClassName("navbar-links")[0]
       .classList.toggle("active");
   };
-  //add cart
-  const handelincrement = (data) => {
-    dispatch(incrementCounter(data));
-  };
-  //remove cart 
-  const removeItem = (product) => {
-    dispatch(decrementCounter(product));
-    notifyError('Item Remove From Cart');
-  };
+
 
   return (
     <div className="top-0 w-[100%] fixed z-50 shadow-lg">
@@ -202,7 +182,7 @@ export const Header = () => {
                 <strong>
                   <span>
                     <IconButton className="color-[#FF6F00] h-[50px] w-[50px] hover:bg-orange-300 hover:rounded-md hover:text-white"
-                      onClick={() => {setisDrowerOpen(true);togglefunction()}}
+                      onClick={() => { setisDrowerOpen(true); togglefunction() }}
                     >
                       <Badge badgeContent={product.length} color="secondary">
                         <ShoppingCartIcon />
@@ -216,52 +196,59 @@ export const Header = () => {
             <li>
               <a>
                 {" "}
-                <strong>
-                  <span>
-                    <IconButton className="color-[#FF6F00] h-[50px] w-[50px] hover:bg-orange-300 hover:rounded-md hover:text-white"
-                      onClick={() => {setOver(true);togglefunction()}}
+               
+
+                <div class="group relative cursor-pointer md:w-[100px]">
+                  <div class="flex items-center justify-center  bg-white ">
+                    <IconButton className="color-[#FF6F00] h-[50px] w-[50px] hover:bg-orange-300 hover:rounded-md hover:text-white menu-hover  "
                     >
                       <AccountBoxIcon />
                     </IconButton>
-                  </span>
-                </strong>
+                  </div>
+
+                  <div class=" invisible absolute z-50 md:w-[100px] flex-col bg-gray-50 py-1  text-gray-800 shadow-xl group-hover:visible rounded-sm">
+
+                    {
+                      user ? <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+                      <MenuItem>
+                        <span>
+                          <AccountBoxIcon />
+                        </span>{' '}
+                        Profile
+                      </MenuItem>
+                    </Link> : <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+                      <MenuItem>
+                        <span>
+                          <AccountBoxIcon />
+                        </span>{' '}
+                        Login
+                      </MenuItem>
+                    </Link>
+                    }
+
+                   
+                    
+
+                    <MenuItem onClick={() => {_handelLogout() }}>
+                      <span>
+                        <LogoutIcon />
+                      </span>
+                      Logout
+                    </MenuItem>
+                  </div>
+                </div>
+
               </a>
             </li>
           </ul>
         </div>
-
-
-
-
-
-
       </div>
-      {/* //profile open */}
-      {over && (
-        <ClickAwayListener onClickAway={() => setOver(false)}>
-          <div className="flex justify-end mt-[10px]">
-            <div className="w-[300px] h-[100px] bg-white ">
-              <Link
-                to="/login"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <MenuItem onClick={() => setOver(false)}>
-                  <span>
-                    <AccountBoxIcon />
-                  </span>
-                  Login
-                </MenuItem>
-              </Link>
-              <MenuItem onClick={() => { setOver(false); _handelLogout() }}>
-                <span>
-                  <LogoutIcon />
-                </span>
-                Logout
-              </MenuItem>
-            </div>
-          </div>
-        </ClickAwayListener>
-      )}
+
+
+    
+
+
+
       {/* //drawer open */}
       <Drawer
         anchor="right"
@@ -403,7 +390,7 @@ export const Header = () => {
                   </Link>
                 </div>
 
-                <Link to="/checkout">
+                <Link to="/login">
                   <div className="col-6">
                     <Button
                       variant="contained"
