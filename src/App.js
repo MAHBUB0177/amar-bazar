@@ -18,6 +18,7 @@ import { Categoris } from './page/Categoris';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Page404 } from './components/Page404';
+import { Profile } from './components/profile';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           } />
           
           <Route path='/login' element={<Authenticaton/>} />
+          <Route path='/Profile' element={<Profile/>}/>
           <Route path='/*' element={<Page404/>}/>
         
         </Routes>

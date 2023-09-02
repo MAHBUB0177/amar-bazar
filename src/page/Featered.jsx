@@ -18,7 +18,7 @@ const Responsive=()=>  {
                     fetch('https://fakestoreapi.com/products')
                       .then(res => res.json())
                       .then(data => {
-                        console.log(data,'mahbub alam')
+                        // console.log(data,'mahbub alam')
                         setProduct(data)
                       })
                   }, []);

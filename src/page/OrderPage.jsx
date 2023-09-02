@@ -144,7 +144,7 @@ const OrderPage = () => {
                   <span class="font-semibold">Total</span>
                   <span class="font-semibold">${total.toFixed(2)}</span>
                 </div>
-                <Link to='/login' >
+                <Link to='/checkout' >
                   <button class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full cursor-pointer">Checkout</button>
                 </Link>
               </div>

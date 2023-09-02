@@ -3,7 +3,8 @@ import "./Header.css";
 import { Table, Form } from "react-bootstrap";
 import { IconButton } from "@material-ui/core";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
@@ -39,15 +40,13 @@ export const Header = () => {
   const favCount = useSelector((state) => state.count,)
   const product = useSelector((state) => state.product);
   const user = useSelector(state => state.userAuth)
-  console.log(user,'userauthdsta7890-')
+  const isEmpty = !user || Object.keys(user).length === 0;
 
-
+  const navigate = useNavigate();
   const [isDrowerOpen, setisDrowerOpen] = useState(false);
-  const [over, setOver] = useState(false);
   const [text, setText] = useState("");
 
 
-  console.log(user, 'userAuthheadr')
   let total = 0;
   for (let i = 0; i < product.length; i++) {
     let prod = product[i];
@@ -59,10 +58,9 @@ export const Header = () => {
 
   //logout function
   const _handelLogout = () => {
-    console.log('first')
     dispatch(userlogin({}))
     dispatch(decrementCounterALL());
-    Navigate(`/`);
+    navigate(`/`);
   };
 
 
@@ -207,28 +205,24 @@ export const Header = () => {
                   </div>
 
                   <div class=" invisible absolute z-50 md:w-[100px] flex-col bg-gray-50 py-1  text-gray-800 shadow-xl group-hover:visible rounded-sm">
-
-                    {
-                      user ? <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+                  {
+                    isEmpty ? <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+                    <MenuItem>
+                      <span>
+                        <AccountBoxIcon />
+                      </span>{' '}
+                      Login
+                    </MenuItem>
+                  </Link> : <Link to="/Profile" style={{ textDecoration: "none", color: "inherit" }}>
                       <MenuItem>
                         <span>
                           <AccountBoxIcon />
                         </span>{' '}
                         Profile
                       </MenuItem>
-                    </Link> : <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
-                      <MenuItem>
-                        <span>
-                          <AccountBoxIcon />
-                        </span>{' '}
-                        Login
-                      </MenuItem>
                     </Link>
-                    }
-
+                  }
                    
-                    
-
                     <MenuItem onClick={() => {_handelLogout() }}>
                       <span>
                         <LogoutIcon />
@@ -327,7 +321,6 @@ export const Header = () => {
                             className="input-group"
                             style={{ width: "100px", marginTop: "15px" }}
                           >
-                            {/* <button type='button' className='input-group-text' style={{width:'15px'}} onClick={()=>handelDecrement(item)}>-</button> */}
                             <button
                               type="button"
                               className="input-group-text"
