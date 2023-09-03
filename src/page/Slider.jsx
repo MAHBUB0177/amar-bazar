@@ -34,8 +34,6 @@ const slideItem = [
 ]
 
 export const Slider = () => {
-
-  
   const [countdown1, setCountdown1] = useState({ days1: 0, hours1: 0, minutes1: 0, seconds1: 0 });//card 1
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });//card 2
   
@@ -47,6 +45,10 @@ export const Slider = () => {
       return () => clearInterval(); 
   }, []);
 
+
+;
+
+   
   return (
     <div className='row mx-[2px]' style={{ background: 'white', marginTop: '5px',  }}>
       <div className='col-md-8 slide' style={{ height: '380px' }}>

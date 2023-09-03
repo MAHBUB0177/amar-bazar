@@ -17,7 +17,7 @@ import { notifySuccess } from "../components/common/notifySuccess";
 
 export const Shop = () => {
   const [Products, setProducts] = useState(null);
-  console.log(Products, 'Products888888888')
+  // console.log(Products, 'Products888888888')
   const [show, setShow] = useState(false);
   const [prod, setProd] = useState(null);
   const [rating, setRating] = useState(0); // initial rating value
@@ -62,7 +62,7 @@ export const Shop = () => {
         method: "GET",
       })
         .then((response) => {
-          console.log(response.data, "categpory data");
+          // console.log(response.data, "categpory data");
           setProducts(response.data);
         })
         .catch((error) => {
