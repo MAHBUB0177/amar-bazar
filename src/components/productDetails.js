@@ -64,7 +64,7 @@ export const ProductDetails = () => {
         </div>
         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0" style={{ cursor: "auto" }}>
             <h2 className="text-sm title-font text-gray-500 tracking-widest" style={{ cursor: "auto" }}>ON SALE</h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1" style={{ cursor: "auto" }}>{productDetails?.category}</h1>
+            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 text-start" style={{ cursor: "auto" }}>{productDetails?.category}</h1>
             <div className="flex mb-4">
                 <span className="flex items-center">
                 <StarIcon className="text-orange-500" fill="currentColor" />
