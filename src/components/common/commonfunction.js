@@ -3,8 +3,6 @@ import { REMOVE, decrementCounter, incrementCounter } from "../../Service/Action
 import { notifyError } from "./notifySuccess";
 import store from '../../Store'
 
-
-
  //add cart
  export const handelincrement = (data) => {
     store.dispatch(incrementCounter(data));
@@ -16,7 +14,7 @@ import store from '../../Store'
   };
 
 
-export  const handelDecrement = (item) => {
+export const handelDecrement = (item) => {
     store.dispatch(REMOVE(item));
     // console.log('data test',item_id)
     // let index = product.findIndex(obj => obj.id === item_id)

@@ -1,16 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-
 } from "react-router-dom";
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './page/HomePage';
 import OrderPage from './page/OrderPage';
-
 import CheckOut from './page/CheckOut';
 import { Authenticaton } from './components/Authenticaton';
 import PrivetRoute from './components/PrivetRoute';
@@ -19,19 +16,16 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Page404 } from './components/Page404';
 import { Profile } from './components/profile';
+import { Suspense } from 'react';
+import Loading from './components/loading';
 
 
 function App() {
-
-
   return (
     <div className="App">
-
- 
       <Router>
         <div className='mb-[90px]'>
         <Header />
-
         </div>
         <Suspense fallback={<Loading/>}>
         <Routes>

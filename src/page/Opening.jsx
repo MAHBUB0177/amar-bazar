@@ -6,7 +6,7 @@ export const Opening = () => {
       <div class="max-w-7xl mx-auto  px-4 sm:px-6 lg:py-10 lg:px-8">
         <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Our service statistics</h2>
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-4 mt-4">
-          <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div class="bg-white overflow-hidden shadow sm:rounded-lg transform transition duration-300 hover:scale-105">
             <div class="px-4 py-5 sm:p-6">
               <dl>
                 <dt class="text-sm leading-5 font-medium text-gray-500 truncate">Free Shipping From</dt>
@@ -14,7 +14,7 @@ export const Opening = () => {
               </dl>
             </div>
           </div>
-          <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div class="bg-white overflow-hidden shadow sm:rounded-lg transform transition duration-300 hover:scale-105">
             <div class="px-4 py-5 sm:p-6">
               <dl>
                 <dt class="text-sm leading-5 font-medium text-gray-500 truncate">Support  At Anytime</dt>
@@ -22,7 +22,7 @@ export const Opening = () => {
               </dl>
             </div>
           </div>
-          <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div class="bg-white overflow-hidden shadow sm:rounded-lg transform transition duration-300 hover:scale-105">
             <div class="px-4 py-5 sm:p-6">
               <dl>
                 <dt class="text-sm leading-5 font-medium text-gray-500 truncate">Latest Offer Upto Off</dt>
@@ -30,7 +30,7 @@ export const Opening = () => {
               </dl>
             </div>
           </div>
-          <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div class="bg-white overflow-hidden shadow sm:rounded-lg transform transition duration-300 hover:scale-105">
             <div class="px-4 py-5 sm:p-6">
               <dl>
                 <dt class="text-sm leading-5 font-medium text-gray-500 truncate">Total users</dt>
@@ -41,9 +41,6 @@ export const Opening = () => {
         </div>
       </div>
       <hr className='hr-line' />
-
-
-
     </div>
   )
 }
