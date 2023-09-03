@@ -9,6 +9,10 @@ import vagitables from '../images/vagitables3.png'
 import image4 from '../images/shoping3.jpg'
 import image5 from '../images/shoping5.jpg'
 import './Common.css'
+import vagetables1 from '../images/fresh-vegetables.webp'
+import {  CountdownStart, startCountdown } from '../components/countdown'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 
 const slideItem = [
@@ -31,65 +35,18 @@ const slideItem = [
 
 export const Slider = () => {
 
-
-   // Set the date we're counting down to
-   var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
-
-   // Update the countdown every 1 second
-   var x = setInterval(function() {
-       // Get today's date and time
-       var now = new Date().getTime();
-       // Find the distance between now and the count down date
-       var distance = countDownDate - now;
-       // Time calculations for days, hours, minutes and seconds
-       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-       // Display the result in the corresponding elements
-       document.getElementById("days").textContent = days + "d";
-       document.getElementById("hours").textContent = hours + "h";
-       document.getElementById("minutes").textContent = minutes + "m";
-       document.getElementById("seconds").textContent = seconds + "s";
-       // If the count down is over, write some text 
-       if (distance < 0) {
-           clearInterval(x);
-           document.getElementById("countdown").innerHTML = "EXPIRED";
-       }
-   }, 1000);
-
-
-
-   var countDownDate1 = new Date("oct 1, 2023 00:00:00").getTime();
-   var y= setInterval(function() {
-    // Get today's date and time
-    var now = new Date().getTime();
-    // Find the distance between now and the count down date
-    var distance = countDownDate1 - now;
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
   
+  const [countdown1, setCountdown1] = useState({ days1: 0, hours1: 0, minutes1: 0, seconds1: 0 });//card 1
+  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });//card 2
+  
+  useEffect(() => {
+      startCountdown(setCountdown);
+      // return () => clearInterval(); // Clean up on unmount
 
-    // Display the result in the corresponding elements
-    document.getElementById("days1").textContent = days + "d";
-    document.getElementById("hours1").textContent = hours + "h";
-    document.getElementById("minutes1").textContent = minutes + "m";
-    document.getElementById("seconds1").textContent = seconds + "s";
+      CountdownStart(setCountdown1);
+      return () => clearInterval(); 
+  }, []);
 
-
-    // If the count down is over, write some text 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "EXPIRED";
-    }
-}, 1000);
-
-   
   return (
     <div className='row mx-[2px]' style={{ background: 'white', marginTop: '5px',  }}>
       <div className='col-md-8 slide' style={{ height: '380px' }}>
@@ -145,16 +102,16 @@ export const Slider = () => {
             <h2 className='text-start font-semibold'>SUMMER23</h2>
             <div class="flex flex-wrap gap-2 justify-between items-center pt-2 ">
                 <div class="border rounded-md px-1 bg-orange-300">
-                    <div id="days" class="font-bold font-mono text-sm text-gray-800"></div>
+                    <div id="days" class="font-bold font-mono text-sm text-gray-800">{countdown1?.days1}</div>
                 </div>
                 <div class="border rounded-md px-1 bg-orange-300">
-                    <div id="hours" class="font-bold font-mono text-sm text-gray-800"></div>
+                    <div id="hours" class="font-bold font-mono text-sm text-gray-800">{countdown1?.hours1}</div>
                 </div>
                 <div class="border rounded-md px-2 bg-orange-300">
-                    <div id="minutes" class="font-bold font-mono text-sm text-gray-800"></div>
+                    <div id="minutes" class="font-bold font-mono text-sm text-gray-800">{countdown1?.minutes1}</div>
                 </div>
                 <div class="border rounded-md px-1 bg-orange-300">
-                    <div id="seconds" class="font-bold font-mono text-sm text-gray-800"></div>
+                    <div id="seconds" class="font-bold font-mono text-sm text-gray-800">{countdown1?.seconds1}</div>
                 </div>
             </div>
           </div>
@@ -171,16 +128,18 @@ export const Slider = () => {
             <h2 className='text-start font-semibold'>Summer Gift Coupn</h2>
             <div class="flex flex-wrap gap-2 justify-between items-center pt-2 ">
                 <div class="border rounded-md px-1 bg-orange-300">
-                    <div id="days1" class="font-bold font-mono text-sm text-gray-800"></div>
+                    <div id="days1" class="font-bold font-mono text-sm text-gray-800">{countdown?.days}</div>
                 </div>
                 <div class="border rounded-md px-1 bg-orange-300">
-                    <div id="hours1" class="font-bold font-mono text-sm text-gray-800"></div>
+                    <div id="hours1" class="font-bold font-mono text-sm text-gray-800">
+                      {countdown?.hours}
+                    </div>
                 </div>
                 <div class="border rounded-md px-2 bg-orange-300">
-                    <div id="minutes1" class="font-bold font-mono text-sm text-gray-800"></div>
+                    <div id="minutes1" class="font-bold font-mono text-sm text-gray-800">{countdown?.minutes}</div>
                 </div>
                 <div class="border rounded-md px-1 bg-orange-300">
-                    <div id="seconds1" class="font-bold font-mono text-sm text-gray-800"></div>
+                    <div id="seconds1" class="font-bold font-mono text-sm text-gray-800">{countdown?.seconds}</div>
                 </div>
             </div>
           </div>

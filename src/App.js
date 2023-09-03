@@ -18,20 +18,23 @@ import { Categoris } from './page/Categoris';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Page404 } from './components/Page404';
-
+import { Suspense } from 'react';
+import Loading from './components/loading';
 
 function App() {
 
 
   return (
     <div className="App">
+
+ 
       <Router>
         <div className='mb-[90px]'>
         <Header />
 
         </div>
+        <Suspense fallback={<Loading/>}>
         <Routes>
-
           <Route path='/' element={<HomePage/>} />
           <Route path='/orderPage' element={<OrderPage/>} />
           <Route path='/item' element={<Categoris/>} />
@@ -41,19 +44,18 @@ function App() {
             <PrivetRoute>
             <CheckOut/>
             </PrivetRoute>
-          
           } />
-          
           <Route path='/login' element={<Authenticaton/>} />
           <Route path='/*' element={<Page404/>}/>
         
         </Routes>
+      </Suspense>
+
         {/* <Banner/>
         <Opening/> */}
         <Footer />
       </Router>
       
-
 
 
     </div>
