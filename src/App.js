@@ -18,6 +18,7 @@ import { Page404 } from './components/Page404';
 import { Profile } from './components/profile';
 import { Suspense } from 'react';
 import Loading from './components/loading';
+import { ProductDetails } from './components/productDetails';
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
             <CheckOut/>
             </PrivetRoute>
           } />
+
+          <Route  path='/productDetails' element={<ProductDetails/>}/>
           <Route path='/login' element={<Authenticaton/>} />
           <Route path='/Profile' element={<Profile/>}/>
           <Route path='/*' element={<Page404/>}/>

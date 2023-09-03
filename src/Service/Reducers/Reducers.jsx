@@ -5,13 +5,15 @@ import {
   USER_LOGEDIN,
   ADD_FAV,
   INCREMENT_CART,
+  DETAILS_PRODUCT,
 } from "../Constants/ActionType";
 
 const initialCounter = {
   count: 0,
   product: [],
   islogedin: false,
-  userAuth:{}
+  userAuth:{},
+  detailsProduct:{}
 };
 
 const counterReducer = (state = initialCounter, action) => {
@@ -58,6 +60,14 @@ const counterReducer = (state = initialCounter, action) => {
         ...state,
         count: state.count - 1,
         product: newProduct,
+      };
+
+//product details
+      case DETAILS_PRODUCT:
+      return {
+        ...state,
+        islogedin: true,
+        detailsProduct:action.payload
       };
 
     //remove full cart:

@@ -1,5 +1,5 @@
 
-import { REMOVE, decrementCounter, incrementCounter } from "../../Service/Action/Action";
+import { REMOVE, decrementCounter, incrementCounter ,ProductDetails} from "../../Service/Action/Action";
 import { notifyError } from "./notifySuccess";
 import store from '../../Store'
 
@@ -24,3 +24,6 @@ export const handelDecrement = (item) => {
     // }
   };
 
+export const productDetails=(item)=>{
+  store.dispatch(ProductDetails(item))
+}

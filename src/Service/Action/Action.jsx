@@ -6,6 +6,7 @@ import {
   ADD_FAV,
   INCREMENT_CART,
   RMV_ONE,
+  DETAILS_PRODUCT,
 } from "../Constants/ActionType";
 
 
@@ -22,6 +23,14 @@ export const incrementCounter = (data) => {
   console.log(data, "action datas");
   return {
     type: ADD_TO_CART,
+    payload: data,
+  };
+};
+
+// Product Details
+export const ProductDetails = (data) => {
+  return {
+    type: DETAILS_PRODUCT,
     payload: data,
   };
 };
