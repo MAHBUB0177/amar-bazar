@@ -25,6 +25,7 @@ const OrderPage = () => {
   TabTitle('Amar Bazar | OrderPage')
   // total cout":
   const cartItem = useSelector(state => state.product)
+  console.log(cartItem,'cartItem')
   let total = 0;
   for (let i = 0; i < cartItem.length; i++) {
     let prod = cartItem[i]
@@ -50,9 +51,9 @@ const OrderPage = () => {
                     <thead>
                       <tr className='hover:bg-slate-100'>
                         <th class="text-left font-semibold">Product</th>
-                        <th class="text-left font-semibold">Price</th>
+                        <th class="text-center font-semibold">Price</th>
                         <th class="text-left font-semibold">Quantity</th>
-                        <th class="text-left font-semibold">Total</th>
+                        <th class="text-center font-semibold">Total</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -62,8 +63,8 @@ const OrderPage = () => {
                           <tr className='hover:bg-slate-100 hover:shadow-sm hover:rounded-lg'>
                             <td class="py-4">
                               <div class="flex ">
-                                <img className="h-16 w-16 mr-4 " src={item?.image} alt="Product image" />
-                                <span class="font-semibold">{item?.category.substring(0, 16)}</span>
+                                <img className="h-16 mr-4" src={item?.image} alt="Product image" />
+                                <span class="font-semibold">{item?.title.substring(0, 16)}</span>
                               </div>
                             </td>
                             <td class="py-4">{item?.price}</td>

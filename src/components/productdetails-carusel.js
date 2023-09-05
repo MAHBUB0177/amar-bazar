@@ -1,7 +1,11 @@
 import React from 'react'
 import SliderImage from 'react-zoom-slider';
 
+
+
 export const ProductdetailsCarusel = ({productDetails}) => {
+    console.log(productDetails,'productDetails')
+
 
     const data = [
         {

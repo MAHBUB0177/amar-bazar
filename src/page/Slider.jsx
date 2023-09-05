@@ -6,7 +6,6 @@ import image2 from '../images/shoping.jpg'
 import image3 from '../images/shoping2.jpg'
 import vagitables from '../images/vagitables3.png'
 
-import image4 from '../images/shoping3.jpg'
 import image5 from '../images/shoping5.jpg'
 import './Common.css'
 import vagetables1 from '../images/fresh-vegetables.webp'
@@ -15,19 +14,21 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 
+
 const slideItem = [
+
   {
-    title: 'Fresh Vagetables',
+    title: `Hot Deals `,
     description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.',
     image: image1
   },
   {
-    title: 'Latest & Updates Products',
+    title: 'FlashSale',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     image: image2
   },
   {
-    title: 'All Updates products ',
+    title: 'Latest products ',
     description: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.',
     image: image3
   }
@@ -64,7 +65,8 @@ export const Slider = () => {
                       class=" hidden md:block lg:flex-grow mt-5 md:mt-0   md:w-1.5/2 lg:pr-24 md:pr-16  flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
                       <h1
                         class="text-2xl font-extrabold leading-9 tracking-tight mb-3 text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-normal">
-                        Title of Project
+                        {/* Title of Project  */}
+                        {item?.title}
                       </h1>
                       <p class="mb-8 md:pl-0  pl-2 pr-2 leading-relaxed dark:text-gray-300">
                         Short description here, Short description here Short description here Short description here Short

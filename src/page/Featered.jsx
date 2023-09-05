@@ -1,70 +1,62 @@
-import React ,{  useEffect, useState }from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import image1 from '../images/image1.webp'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import './Common.css'
-import {
-          Button,
-          CardActions,
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import "./Common.css";
+import { Button, CardActions } from "@material-ui/core";
+import StarIcon from "@mui/icons-material/Star";
+
+import { caruselItem } from "../components/product";
+
+const Responsive = () => {
+
+
+  const settings = {
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+  };
+
+  return (
+    <div className="slick bg-white" >
+      <div className="container">
+        <div className="mt-4 flex items-center justify-between">
+          <span className="border-b w-1/5 lg:w-2/5"></span>
+          <p className="text-2xl font-medium  text-center text-gray-500 uppercase ">
+            Featured Product
+          </p>
+          <span className="border-b w-1/5 lg:w-2/5"></span>
+        </div>
+      </div>
+
+      <Slider {...settings}>
+        {caruselItem?.map((item, i) => (
           
-        } from "@material-ui/core";
-import{Card} from 'react-bootstrap'
 
-const Responsive=()=>  {
-          const [product, setProduct] = useState([]);
-          useEffect(() => {
-                    fetch('https://fakestoreapi.com/products')
-                      .then(res => res.json())
-                      .then(data => {
-                        // console.log(data,'mahbub alam')
-                        setProduct(data)
-                      })
-                  }, []);
-   
-          const settings = {
-          // dots: true,
-          // infinite: true,
-          speed: 500,
-          slidesToShow: 4,
-          slidesToScroll: 1
-          };
-
-            return (
-              <div className="slick" style={{background:'#faf1f0'}}>
-                    <div className='  section-title text-center'>
-                              <h4>Featere Products</h4>
-                              <hr  style={{marginLeft:'200px',marginRight:'200px'}}/>
-                    </div>
-                
-
-                <Slider {...settings}>
-                {
-                product?.map((item,i) =>  
-                <div className="row slick">
-                <div className='col-md-3 ' style={{marginBottom:'5px'}}>
-                                  <div className='card  ' style={{width:'250px',marginLeft:'30px'}}>
-                                    <div className='card-body '>
-                                        <img src={item?.image} alt='' style={{height:'200px',width:'200px'}}/>
-                                    </div>
-                                    <p>{item?.title?.substring(0, 20)}</p>
-                                    <p><strong> Price:{item?.price}TK</strong></p>
-                                        <CardActions style={{justifyContent: "center", }}>
-                                        <a href='' className='view-all-btn'>View All<ArrowForwardIcon/></a>
-                                        </CardActions>
-                                 </div>
-                               </div>
-               </div>
+          <div className={`flex-shrink-0 m-6 relative overflow-hidden bg-white rounded-lg max-w-xs shadow-lg transform transition duration-300 hover:scale-105 h-[300px]`} >
           
-                )
-           }
-                </Slider>
-               
-               
-              
+          <div className="relative pt-10 px-10 flex items-center justify-center">
+            <img className="relative w-40 h-[150px]" src={item?.image} alt="" />
+          </div>
+          <div className="flex space-x-2 items-center mt-2 justify-center ">
+                <StarIcon className="text-orange-500" fill="currentColor" />
+                <StarIcon className="text-orange-500" fill="currentColor" />
+                <StarIcon className="text-orange-500" fill="currentColor" />
+                <StarIcon className="text-orange-500" fill="currentColor" />
+                <StarIcon className="text-orange-500" fill="none" />
+                <span className="text-gray-600 ml-3"></span>
               </div>
-            );
-          
-        }
-export default Responsive
+          <div className="relative text-white px-6 pb-6 mt-6">
+            <div className="flex justify-between">
+              <span className="block  text-sm text-black font-medium">{item.title.slice(0, 20)}</span>
+              <span className=" bg-white rounded-full text-black  font-bold px-3 py-2 leading-none flex items-center text-sm">{item.price}</span>
+            </div>
+          </div>
+        </div>
+        ))}
+      </Slider>
+    </div>
+  );
+};
+export default Responsive;

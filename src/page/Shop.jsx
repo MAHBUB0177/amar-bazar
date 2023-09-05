@@ -11,14 +11,15 @@ import StarIcon from "@mui/icons-material/Star";
 import { handelincrement, productDetails } from "../components/common/commonfunction";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useNavigate } from "react-router";
+import { product } from "../components/product";
 
 export const Shop = () => {
-  const [Products, setProducts] = useState(null);
-  console.log(Products, "Products");
+  // const [Products, setProducts] = useState(null);
+  // console.log(Products, "Products");
   const [show, setShow] = useState(false);
   const [prod, setProd] = useState(null);
   const [rating, setRating] = useState(0); // initial rating value
-  const [items, setItems] = useState(false); // initial rating value
+  // const [items, setItems] = useState(false); // initial rating value
 
   // Catch Rating value
   const handleRating = (rate) => {
@@ -31,22 +32,22 @@ export const Shop = () => {
     setShow(true);
   };
 
-  useEffect(() => {
-    const getProduct = async () => {
-      await axios({
-        url: `https://fakestoreapi.com/products`,
-        method: "GET",
-      })
-        .then((response) => {
-          console.log(response,'response')
-          setProducts(response.data);
-        })
-        .catch((error) => {
-          console.log("CategoryProduct", error);
-        });
-    };
-    getProduct();
-  }, []);
+  // useEffect(() => {
+  //   const getProduct = async () => {
+  //     await axios({
+  //       url: `https://fakestoreapi.com/products`,
+  //       method: "GET",
+  //     })
+  //       .then((response) => {
+  //         console.log(response,'response')
+  //         setProducts(response.data);
+  //       })
+  //       .catch((error) => {
+  //         console.log("CategoryProduct", error);
+  //       });
+  //   };
+  //   getProduct();
+  // }, []);
 
 
   const navigate=useNavigate()
@@ -67,7 +68,7 @@ export const Shop = () => {
         id="Projects"
         className="w-fit mt-[20px] mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-20 gap-x-14  mb-5"
       >
-        {Products?.map((item, i) => (
+        {product?.map((item, i) => (
           <div className="w-[300px]  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl p-2">
             <div class="  flex justify-between " >
               <p className="text-[#E74040] h-6 w-6 cursor-pointer" onClick={() => {productDetails(item) ;navigate("/productDetails")}}> <RemoveRedEyeIcon></RemoveRedEyeIcon></p>
@@ -91,7 +92,7 @@ export const Shop = () => {
             <div className="px-4 py-3 w-72">
               <div className="h-8">
                 <h6 className="mt-4 text-gray-800 text-sm font-bold cursor-pointer">
-                  {`${item?.title.slice(0, 50)}...`}
+                  {`${item?.title.slice(0, 50)}`}
                 </h6>
               </div>
 

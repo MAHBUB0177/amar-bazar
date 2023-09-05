@@ -61,11 +61,11 @@ export const ProductDetails = () => {
     <div className="container px-5 py-24 mx-auto" style={{ cursor: "auto" }}>
             <div className="lg:w-4/5 mx-auto flex flex-wrap justify-between">
                 <div className='lg:w-1/2 w-full'>
-                    <ProductdetailsCarusel  />
+                    <ProductdetailsCarusel  productDetails={productDetails}/>
                 </div>
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0" style={{ cursor: "auto" }}>
                     <h2 className="text-sm title-font text-gray-500 tracking-widest" style={{ cursor: "auto" }}>ON SALE</h2>
-                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1" style={{ cursor: "auto" }}>Blue Dress v2</h1>
+                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1" style={{ cursor: "auto" }}>{productDetails?.title}</h1>
                     <div className="flex mb-4">
                         <span className="flex items-center">
                         <StarIcon className="text-orange-500" fill="currentColor" />
@@ -89,7 +89,7 @@ export const ProductDetails = () => {
                             </a>
                         </span>
                     </div>
-                    <p className="leading-relaxed">Dui urna vehicula tincidunt pretium consequat luctus mi, platea fermentum conubia tempus ac orci. Pellentesque dictum malesuada cubilia faucibus dignissim mi nascetur senectus, augue ad libero efficitur dolor duis lobortis, non etiam sociosqu maximus enim mus natoque.</p>
+                    <p className="leading-relaxed text-left">{productDetails?.description}</p>
                     <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                         <div className="flex">
                             <span className="mr-3">Color</span>
