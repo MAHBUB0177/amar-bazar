@@ -127,7 +127,7 @@ export const Shop = () => {
       {/* //open card details modal */}
       <div>
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton className="text-black"></Modal.Header>
+          <Modal.Header closeButton className="text-black bg-slate-400"></Modal.Header>
           <div class="flex-col md:flex-row justify-between  flex gap-4 items-start mx-4 py-12">
             <div class="mx-auto">
               <div>

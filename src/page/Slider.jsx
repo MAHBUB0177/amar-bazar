@@ -13,6 +13,10 @@ import {  CountdownStart, startCountdown } from '../components/countdown'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
+import save1 from '../images/product/save1.png'
+import save2 from '../images/product/image13.webp'
+import save3 from '../images/product/image26.webp'
+
 
 
 const slideItem = [
@@ -20,17 +24,17 @@ const slideItem = [
   {
     title: `Hot Deals `,
     description: 'Nulla vitae elit libero, a pharetra augue mollis interdum.',
-    image: image1
+    image: save1
   },
   {
     title: 'FlashSale',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    image: image2
+    image: save2
   },
   {
     title: 'Latest products ',
     description: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.',
-    image: image3
+    image: save3
   }
 ]
 
@@ -59,7 +63,7 @@ export const Slider = () => {
               <Carousel.Item>
 
 
-                <section class="text-gray-600 body-font bg-gray-200 dark:bg-slate-900 rounded-md shadow-sm h-[360px]">
+                <section class="text-gray-600 body-font bg-white dark:bg-slate-900 rounded-md shadow-sm h-[360px] border">
                   <div class="container mx-auto flex md:px-24 md:py-10 md:flex-row flex-col items-center">
                     <div
                       class=" hidden md:block lg:flex-grow mt-5 md:mt-0   md:w-1.5/2 lg:pr-24 md:pr-16  flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
@@ -83,7 +87,7 @@ export const Slider = () => {
                       </div>
                     </div>
                     <div class=" lg:max-w-lg lg:w-full mb-5 md:mb-0 md:w-1/2 w-5/6">
-                      <img class="object-cover object-center rounded d-block w-100" alt="hero" src="https://www.svgrepo.com/show/490900/hot-air-balloon.svg" />
+                      <img class="object-cover object-center rounded d-block w-100" alt="hero" src={item?.image} />
                     </div>
                   </div>
                 </section>
@@ -154,7 +158,7 @@ export const Slider = () => {
       </div>
 
 
-      <div className="row bg-[#f5afa9] rounded-md mb-[20px] ml-[5px] mr-[5px] p-[10px]" >
+      <div className="flex justify-between bg-[#f5afa9] rounded-md mb-[20px]  p-[20px] " >
         <div className='col-md-8'>
           <span>  <h4 ><strong ><span style={{ color: 'green' }}>100% Natural Quality</span></strong> Organic Product</h4> </span>
           <p >See Our latest discounted products from here and get a specialdiscount product </p>
