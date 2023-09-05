@@ -16,17 +16,19 @@ import { TabTitle } from '../utils/FunctionTitle';
 
   const handelSubmit = event => {
     let phone = document.getElementById('phone').value;
-    let name = document.getElementById('firstName').value;
-    let lname = document.getElementById('lastName').value;
+    let name = document.getElementById('name').value;
+    let date = document.getElementById('date').value;
     let email = document.getElementById('email').value;
-    let street = document.getElementById('street').value;
+    let cardnumber = document.getElementById('card-number').value;
+    let expirationDate = document.getElementById('expiration-date').value;
+    
   
-    if (name === "" || phone==='' ||  lname==="" || email === '' || street==="") {
-      Swal.fire({
+    if (name === "" || phone==='' ||  date==="" || email === '' || cardnumber==="" || expirationDate==="") {
+     return Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Please fillup carefully!',
-        timer: 2000
+        // timer: 2000
       })
     }
     else {
@@ -34,19 +36,14 @@ import { TabTitle } from '../utils/FunctionTitle';
       icon: 'success',
       title: 'Your Order Is Confirmed!!',
       showConfirmButton: false,
-      timer: 1500,
+      timer: 2000,
      })
      dispatch(decrementCounterALL());
     window.location='/'
-    console.log('mahbub reedirect')
+    // console.log('mahbub reedirect')
+    document.getElementsByName('contact-form')[0].reset()
     }
   
-//     event.preventDefault()
-    var frm = document.getElementsByName('contact-form')[0];
-    frm.submit(); // Submit the form
-    frm.reset();  // Reset all form data
-
-    // return false; // Prevent page refresh
    }
 
   return (
@@ -58,7 +55,7 @@ import { TabTitle } from '../utils/FunctionTitle';
               for="name"
               class="mb-3 block text-start font-medium text-[#07074D]"
             >
-              Full Name
+              Full Name <span className='text-red-500'>*</span>
             </label>
             <input
               type="text"
@@ -73,7 +70,7 @@ import { TabTitle } from '../utils/FunctionTitle';
               for="phone"
               class="mb-3 block text-start font-medium text-[#07074D]"
             >
-              Phone Number
+              Phone Number <span className='text-red-500'>*</span>
             </label>
             <input
               type="text"
@@ -88,7 +85,7 @@ import { TabTitle } from '../utils/FunctionTitle';
               for="email"
               class="mb-3 block text-start font-medium text-[#07074D]"
             >
-              Email Address
+              Email Address <span className='text-red-500'>*</span>
             </label>
             <input
               type="email"
@@ -105,7 +102,7 @@ import { TabTitle } from '../utils/FunctionTitle';
                   for="date"
                   class="mb-3 block text-start font-medium text-[#07074D]"
                 >
-                  Date
+                  Date <span className='text-red-500'>*</span>
                 </label>
                 <input
                   type="date"
@@ -134,7 +131,7 @@ import { TabTitle } from '../utils/FunctionTitle';
           </div>
 
           <div class="mb-5 pt-3">
-            <label class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl">
+            <label class="mb-5 block text-base font-semibold text-[#07074D] sm:text-xl text-start">
               Address Details
             </label>
             <div class="-mx-3 flex flex-wrap">
@@ -203,7 +200,7 @@ import { TabTitle } from '../utils/FunctionTitle';
                   for="card-number"
                   class="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Card Number
+                  Card Number<span className='text-red-500'>*</span>
                 </label>
                 <input
                   type="text"
@@ -218,7 +215,7 @@ import { TabTitle } from '../utils/FunctionTitle';
                   for="expiration-date"
                   class="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Expiration Date
+                  Expiration Date<span className='text-red-500'>*</span>
                 </label>
                 <input
                   type="text"
@@ -262,6 +259,7 @@ import { TabTitle } from '../utils/FunctionTitle';
             <div class="mt-8">
               <button
                 type="submit"
+                onClick={handelSubmit}
                 class="w-full bg-green-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
               >
                 Confirm

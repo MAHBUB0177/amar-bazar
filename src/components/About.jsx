@@ -37,8 +37,8 @@ export const About = () => {
     <div className="">
       <div className="flex flex-col md:flex-row justify-between items-center pt-[20px] gap-5 p-[20px]">
         <div className="basis-3/4">
-          <h2 className="text-3xl font-medium text-black pb-5">Welcome to our AmarBazar</h2>
-          <div className="flex justify-center items-center text-[18px] ">
+          <h2 className="  text-3xl font-medium text-black pb-5">Welcome to our AmarBazar</h2>
+          <div className="flex justify-center items-center text-[18px] text-left">
             Holisticly seize parallel metrics and functional ROI. Seamlessly
             revolutionize error-free internal or "organic" sources before
             effective scenarios. Progressively incentivize state of the art

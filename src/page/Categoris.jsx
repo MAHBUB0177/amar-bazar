@@ -11,7 +11,6 @@ import image29 from "../images/product/image29.webp";
 
 
 import './Common.css'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { TabTitle } from '../utils/FunctionTitle'
 
 

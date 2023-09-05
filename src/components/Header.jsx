@@ -383,7 +383,7 @@ export const Header = () => {
                   </Link>
                 </div>
 
-                <Link to="/login">
+                <Link to={isEmpty ? '/login' : '/checkout'}>
                   <div className="col-6">
                     <Button
                       variant="contained"
