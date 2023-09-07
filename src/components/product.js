@@ -46,7 +46,7 @@ export const product=[
         "id": 2,
         "title": "Gold-Bootle",
         "price": 200,
-        "description": 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available',
+        "description": 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available',
         "category": "jewelery",
         "image": image2,
         "rating": {
@@ -58,7 +58,7 @@ export const product=[
         "id": 3,
         "title": "Phone ",
         "price": 120,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "category": "jewelery",
         "image": image3,
         "rating": {
@@ -70,7 +70,7 @@ export const product=[
         "id": 4,
         "title": "Helthy-Food ",
         "price": 300,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": " the leap into electronic typesetting, remaining essentially unchanged.",
         "category": "jewelery",
         "image": image4,
         "rating": {
@@ -82,7 +82,7 @@ export const product=[
         "id": 5,
         "title": "Vegetables-fruit",
         "price": 90,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         "category": "jewelery",
         "image": image5,
         "rating": {
@@ -94,7 +94,7 @@ export const product=[
         "id": 6,
         "title": "Corn-Flower ",
         "price": 150,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old",
         "category": "jewelery",
         "image": image6,
         "rating": {
@@ -106,7 +106,7 @@ export const product=[
         "id": 7,
         "title": "Infinix-Phone",
         "price": 230,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "consectetur, from a Lorem Ipsum passage, and going through the cites of the word",
         "category": "jewelery",
         "image": image9,
         "rating": {
@@ -118,7 +118,7 @@ export const product=[
         "id": 8,
         "title": "Baby-Shop",
         "price": 122,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of (The Extremes of Good and Evil) by Cicero",
         "category": "jewelery",
         "image": image7,
         "rating": {
@@ -130,7 +130,7 @@ export const product=[
         "id": 9,
         "title": "Solid Gold Petite Micropave ",
         "price": 212,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32",
         "category": "jewelery",
         "image":image8,
         "rating": {
@@ -154,7 +154,7 @@ export const product=[
         "id": 11,
         "title": "Black-Tshirt",
         "price": 123,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "The first line of Lorem Ipsum, Lorem ipsum dolor sit amet, comes from a line in section 1.10.32",
         "category": "jewelery",
         "image": image10,
         "rating": {
@@ -166,7 +166,7 @@ export const product=[
         "id": 12,
         "title": "Branded Shoes ",
         "price": 550,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc",
         "category": "jewelery",
         "image": image11,
         "rating": {
@@ -190,7 +190,7 @@ export const product=[
         "id": 14,
         "title": "Stylish Watch",
         "price": 1200,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc",
         "category": "jewelery",
         "image": image13,
         "rating": {
@@ -202,7 +202,7 @@ export const product=[
         "id": 15,
         "title": "Branded Shoes ",
         "price": 590,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         "category": "jewelery",
         "image": image14,
         "rating": {
@@ -226,7 +226,7 @@ export const product=[
         "id": 17,
         "title": "Stylish Bags ",
         "price": 500,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         "category": "jewelery",
         "image": image16,
         "rating": {
@@ -250,7 +250,7 @@ export const product=[
         "id": 19,
         "title": "Solid Gold Petite Micropave ",
         "price": 300,
-        "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
+        "description": " injected humour, or randomised words which don't look even slightly believable.",
         "category": "jewelery",
         "image": image18,
         "rating": {

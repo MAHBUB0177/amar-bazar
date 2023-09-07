@@ -12,14 +12,49 @@ import { caruselItem } from "../components/product";
 const Responsive = () => {
 
 
-  const settings = {
+  // const settings = {
+  //   speed: 500,
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  // };
+  
+  var settings = {
+    // dots: true,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
-    <div className="slick bg-white" >
+    <div className=" bg-white" >
       <div className="container">
         <div className="mt-4 flex items-center justify-between">
           <span className="border-b w-1/5 lg:w-2/5"></span>
@@ -34,7 +69,7 @@ const Responsive = () => {
         {caruselItem?.map((item, i) => (
           
 
-          <div className={`flex-shrink-0 m-6 relative overflow-hidden bg-white rounded-lg max-w-xs shadow-lg transform transition duration-300 hover:scale-105 h-[300px]`} >
+          <div className={`md:w-[280px] flex-shrink-0 m-6 relative overflow-hidden bg-white rounded-lg max-w-xs shadow-lg transform transition duration-300 hover:scale-105 h-[300px]`} >
           
           <div className="relative pt-10 px-10 flex items-center justify-center">
             <img className="relative w-40 h-[150px]" src={item?.image} alt="" />

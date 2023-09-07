@@ -87,7 +87,7 @@ export const Categoris = () => {
         {
           categoriesList?.map((item,index)=>
           <>
-          <div className={`flex-shrink-0 m-6 relative overflow-hidden bg-white rounded-lg max-w-xs shadow-lg transform transition duration-300 hover:scale-105`} >
+          <div className={`md:w-[280px] flex-shrink-0 m-6 relative overflow-hidden bg-white rounded-lg max-w-xs shadow-lg transform transition duration-300 hover:scale-105`} >
           <svg className="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
             style={{ transform: 'scale(1.5)', opacity: 0.1 }}>
             <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />

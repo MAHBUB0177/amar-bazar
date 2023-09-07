@@ -49,8 +49,6 @@ export const Slider = () => {
       CountdownStart(setCountdown1);
       return () => clearInterval(); 
   }, []);
-
-
 ;
 
    
@@ -162,7 +160,6 @@ export const Slider = () => {
         <div className='col-md-8'>
           <span>  <h4 ><strong ><span style={{ color: 'green' }}>100% Natural Quality</span></strong> Organic Product</h4> </span>
           <p >See Our latest discounted products from here and get a specialdiscount product </p>
-
         </div>
 
         <div className='col-md-4' style={{ marginTop: '25px', marginBottom: '20px' }}>

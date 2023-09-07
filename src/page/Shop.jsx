@@ -12,14 +12,24 @@ import { handelincrement, productDetails } from "../components/common/commonfunc
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useNavigate } from "react-router";
 import { product } from "../components/product";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const Shop = () => {
-  // const [Products, setProducts] = useState(null);
-  // console.log(Products, "Products");
   const [show, setShow] = useState(false);
   const [prod, setProd] = useState(null);
   const [rating, setRating] = useState(0); // initial rating value
-  // const [items, setItems] = useState(false); // initial rating value
+
+  const itemsPerPage = 12;
+  const [visibleItems, setVisibleItems] = useState(itemsPerPage);
+  const[load,setLoad]=useState(false)
+
+  const handleLoadMore = () => {
+    setLoad(true)
+    setTimeout(()=>{
+      setVisibleItems(prevVisibleItems => prevVisibleItems + itemsPerPage);
+      setLoad(false)
+    },[3000])
+  };
 
   // Catch Rating value
   const handleRating = (rate) => {
@@ -64,23 +74,43 @@ export const Shop = () => {
       </div>
 
       {/* //shoping card */}
+
+      <div>
       <section
         id="Projects"
         className="w-fit mt-[20px] mx-auto grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-20 gap-x-14  mb-5"
       >
-        {product?.map((item, i) => (
-          <div className="w-[300px]  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl p-2">
-            <div class="  flex justify-between " >
-              <p className="text-[#E74040] h-6 w-6 cursor-pointer" onClick={() => {productDetails(item) ;navigate("/productDetails")}}> <RemoveRedEyeIcon></RemoveRedEyeIcon></p>
+        {product?.slice(0, visibleItems).map((item, i) => (
+          <div className="md:w-[280px]  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl p-2">
+            <div class="  flex justify-between ">
+              <p
+                className="text-[#E74040] h-6 w-6 cursor-pointer"
+                onClick={() => {
+                  productDetails(item);
+                  navigate("/productDetails");
+                }}
+              >
+                {" "}
+                <RemoveRedEyeIcon></RemoveRedEyeIcon>
+              </p>
 
               <div className="bg-gray-300  p-2 text-[#E74040] rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                  class="h-6 w-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                  />
+                </svg>
               </div>
-           </div>
+            </div>
 
             <img
               src={item?.image}
@@ -88,11 +118,11 @@ export const Shop = () => {
               className="h-[150px] w-[100%] object-fill rounded-t-xl"
               onClick={() => handleShow(item)}
             />
-               <ToastContainer />
-            <div className="px-4 py-3 w-72">
-              <div className="h-8">
+            <ToastContainer />
+            <div className="px-4 py-3 w-72 pb-2">
+              <div className="h-8 px-2">
                 <h6 className="mt-4 text-gray-800 text-sm font-bold cursor-pointer">
-                  {`${item?.title.slice(0, 50)}`}
+                  {`${item?.description.slice(0, 60)}...`}
                 </h6>
               </div>
 
@@ -109,10 +139,12 @@ export const Shop = () => {
                   {item?.price}
                 </p>
                 <del>
-                  <p className="text-sm text-gray-600 cursor-auto ml-2 font-medium">$199</p>
+                  <p className="text-sm text-gray-600 cursor-auto ml-2 font-medium">
+                    $199
+                  </p>
                 </del>
-                <div className="ml-auto" onClick={() => handelincrement(item)}>
-                  <button className="bg-orange-400 rounded-md p-2 font-semibold text-white">
+                <div className=" ml-9" onClick={() => handelincrement(item)}>
+                  <button className="bg-orange-400 rounded-md p-2 font-semibold text-white" >
                     ADD TO CART
                   </button>
                 </div>
@@ -122,12 +154,28 @@ export const Shop = () => {
         ))}
       </section>
 
+      <div className="my-2 flex justify-center">
+        <Button
+          variant="contained"
+          // class="btn btn-outline-info"
+          // style={{ width: "160px", marginTop: "20px" ,fontWeight:'bold'}}
+          className="bg-orange-400 text-white font-semibold rounded-md w-[200px] mt-5"
+          onClick={handleLoadMore}
+        >
+         
+          {load ?<p><CircularProgress size={15} /> <span className="mb-2"> Loading...</span></p> : ' Load More'}
+        </Button>
+      </div>
+      </div>
     
 
       {/* //open card details modal */}
       <div>
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton className="text-black bg-slate-400"></Modal.Header>
+          <Modal.Header
+            closeButton
+            className="text-black bg-slate-400"
+          ></Modal.Header>
           <div class="flex-col md:flex-row justify-between  flex gap-4 items-start mx-4 py-12">
             <div class="mx-auto">
               <div>
@@ -242,6 +290,8 @@ export const Shop = () => {
           </div>
         </Modal>
       </div>
+
+      
     </div>
   );
 };
