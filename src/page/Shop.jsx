@@ -13,6 +13,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useNavigate } from "react-router";
 import { product } from "../components/product";
 import CircularProgress from '@mui/material/CircularProgress';
+import ClearIcon from "@mui/icons-material/Clear";
 
 export const Shop = () => {
   const [show, setShow] = useState(false);
@@ -82,6 +83,7 @@ export const Shop = () => {
       >
         {product?.slice(0, visibleItems).map((item, i) => (
           <div className="md:w-[280px]  bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl p-2">
+            {/* <ToastContainer /> */}
             <div class="  flex justify-between ">
               <p
                 className="text-[#E74040] h-6 w-6 cursor-pointer"
@@ -115,18 +117,18 @@ export const Shop = () => {
             <img
               src={item?.image}
               alt="Product"
-              className="h-[150px] w-[100%] object-fill rounded-t-xl"
+              className="h-[150px] w-[100%] object-fill rounded-t-xl cursor-pointer"
               onClick={() => handleShow(item)}
             />
-            <ToastContainer />
+            
             <div className="px-4 py-3 w-72 pb-2">
               <div className="h-8 px-2">
-                <h6 className="mt-4 text-gray-800 text-sm font-bold cursor-pointer">
+                <h6 className="mt-4 text-slate-600 text-sm font-semibold cursor-pointer">
                   {`${item?.description.slice(0, 60)}...`}
                 </h6>
               </div>
 
-              <div className="flex space-x-2 items-center mt-2">
+              <div className="flex space-x-1 items-center mt-2">
                 <StarIcon className="text-orange-500" fill="currentColor" />
                 <StarIcon className="text-orange-500" fill="currentColor" />
                 <StarIcon className="text-orange-500" fill="currentColor" />
@@ -157,8 +159,7 @@ export const Shop = () => {
       <div className="my-2 flex justify-center">
         <Button
           variant="contained"
-          // class="btn btn-outline-info"
-          // style={{ width: "160px", marginTop: "20px" ,fontWeight:'bold'}}
+
           className="bg-orange-400 text-white font-semibold rounded-md w-[200px] mt-5"
           onClick={handleLoadMore}
         >
@@ -172,10 +173,9 @@ export const Shop = () => {
       {/* //open card details modal */}
       <div>
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header
-            closeButton
-            className="text-black bg-slate-400"
-          ></Modal.Header>
+          <div className="flex justify-end">
+          <div className=" pr-2 text-red-500 cursor-pointer " onClick={handleClose}><ClearIcon/></div>
+          </div>
           <div class="flex-col md:flex-row justify-between  flex gap-4 items-start mx-4 py-12">
             <div class="mx-auto">
               <div>

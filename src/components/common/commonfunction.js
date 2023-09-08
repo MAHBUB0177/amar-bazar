@@ -1,11 +1,12 @@
 
 import { REMOVE, decrementCounter, incrementCounter ,ProductDetails} from "../../Service/Action/Action";
-import { notifyError } from "./notifySuccess";
+import { notifyError, notifySuccess } from "./notifySuccess";
 import store from '../../Store'
 
  //add cart
  export const handelincrement = (data) => {
     store.dispatch(incrementCounter(data));
+    notifySuccess('Product Added To Cart');
   };
   //remove cart 
  export const removeItem = (product) => {

@@ -279,7 +279,7 @@ export const caruselItem=[
     {
         "id": 1,
         "title": "Baby Food",
-        "price": 330,
+        "price": '$330',
         "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
         "category": "jewelery",
         "image": save1,
@@ -291,7 +291,7 @@ export const caruselItem=[
     {
         "id": 20,
         "title": "Baby Food",
-        "price": 330,
+        "price": '$230',
         "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
         "category": "jewelery",
         "image": save2,
@@ -303,7 +303,7 @@ export const caruselItem=[
     {
         "id": 20,
         "title": "Baby Food",
-        "price": 330,
+        "price": '$90',
         "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
         "category": "jewelery",
         "image": save3,
@@ -315,7 +315,7 @@ export const caruselItem=[
     {
         "id": 20,
         "title": "Baby Food",
-        "price": 330,
+        "price": '$190',
         "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
         "category": "jewelery",
         "image": image18,
@@ -327,7 +327,7 @@ export const caruselItem=[
     {
         "id": 20,
         "title": "Baby Food",
-        "price": 330,
+        "price": '$430',
         "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
         "category": "jewelery",
         "image": image11,
@@ -339,7 +339,7 @@ export const caruselItem=[
     {
         "id": 20,
         "title": "Baby Food",
-        "price": 330,
+        "price": '$120',
         "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
         "category": "jewelery",
         "image": image10,
@@ -351,7 +351,7 @@ export const caruselItem=[
     {
         "id": 20,
         "title": "Baby Food",
-        "price": 330,
+        "price": '$130',
         "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
         "category": "jewelery",
         "image": save7,

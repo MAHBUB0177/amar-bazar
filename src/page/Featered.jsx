@@ -74,18 +74,19 @@ const Responsive = () => {
           <div className="relative pt-10 px-10 flex items-center justify-center">
             <img className="relative w-40 h-[150px]" src={item?.image} alt="" />
           </div>
-          <div className="flex space-x-2 items-center mt-2 justify-center ">
-                <StarIcon className="text-orange-500" fill="currentColor" />
+          <div className="flex space-x-1 items-center mt-2 justify-center font-semibold text-slate-500">
+                {/* <StarIcon className="text-orange-500" fill="currentColor" />
                 <StarIcon className="text-orange-500" fill="currentColor" />
                 <StarIcon className="text-orange-500" fill="currentColor" />
                 <StarIcon className="text-orange-500" fill="currentColor" />
                 <StarIcon className="text-orange-500" fill="none" />
-                <span className="text-gray-600 ml-3"></span>
+                <span className="text-gray-600 ml-3"></span> */}
+                {item?.description.slice(0, 60)}...
               </div>
           <div className="relative text-white px-6 pb-6 mt-6">
             <div className="flex justify-between">
-              <span className="block  text-sm text-black font-medium">{item.title.slice(0, 20)}</span>
-              <span className=" bg-white rounded-full text-black  font-bold px-3 py-2 leading-none flex items-center text-sm">{item.price}</span>
+              <span className="block  text-sm  font-bold  text-slate-500">{item.title.slice(0, 20)}</span>
+              <span className="  rounded-full text-slate-500 font-bold  leading-none flex items-center ">{item.price}</span>
             </div>
           </div>
         </div>

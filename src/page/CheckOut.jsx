@@ -24,11 +24,11 @@ import { TabTitle } from '../utils/FunctionTitle';
     
   
     if (name === "" || phone==='' ||  date==="" || email === '' || cardnumber==="" || expirationDate==="") {
-     return Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Please fillup carefully!',
-        // timer: 2000
+        timer: 5000
       })
     }
     else {
@@ -36,10 +36,10 @@ import { TabTitle } from '../utils/FunctionTitle';
       icon: 'success',
       title: 'Your Order Is Confirmed!!',
       showConfirmButton: false,
-      timer: 2000,
+      timer: 5000,
      })
      dispatch(decrementCounterALL());
-    window.location='/'
+     window.location.href = '/'
     // console.log('mahbub reedirect')
     document.getElementsByName('contact-form')[0].reset()
     }

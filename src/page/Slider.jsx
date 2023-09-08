@@ -81,7 +81,7 @@ export const Slider = () => {
                         </a>
                         <a href="#"
                           class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Read
-                          articles</a>
+                          more</a>
                       </div>
                     </div>
                     <div class=" lg:max-w-lg lg:w-full mb-5 md:mb-0 md:w-1/2 w-5/6">
@@ -157,9 +157,9 @@ export const Slider = () => {
 
 
       <div className="flex justify-between bg-[#f5afa9] rounded-md mb-[20px]  p-[20px] " >
-        <div className='col-md-8'>
-          <span>  <h4 ><strong ><span style={{ color: 'green' }}>100% Natural Quality</span></strong> Organic Product</h4> </span>
-          <p >See Our latest discounted products from here and get a specialdiscount product </p>
+        <div className='col-md-8 text-black font-semibold'>
+          <span>  <h4 ><strong ><span style={{ color: 'green' }}>100% Branded Quality</span></strong>  Product</h4> </span>
+          <p >See Our latest discounted products from here and get a special discount product </p>
         </div>
 
         <div className='col-md-4' style={{ marginTop: '25px', marginBottom: '20px' }}>

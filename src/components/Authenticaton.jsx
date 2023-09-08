@@ -23,9 +23,7 @@ export const Authenticaton = () => {
   const handleGoogleSignIn = () => {
     firebase.auth().signInWithPopup(provider)
       .then(res => {
-        console.log('google login data ', res)
-        // console.log(res.additionalUserInfo.profile.email)
-        // console.log(res.credential.accessToken)
+        // console.log('google login data ', res)
         if(res.credential.accessToken){
           dispatch(userlogin(res))
           window.location.href = '/checkout'
@@ -42,7 +40,7 @@ export const Authenticaton = () => {
     firebase.auth().signInWithPopup(fbprovider)
       .then(res => {
         var user = res.user;
-        console.log('facebook login data ', user)
+        // console.log('facebook login data ', user)
         window.location.href = '/checkout'
         dispatch(userlogin(user))
       })
@@ -72,7 +70,10 @@ export const Authenticaton = () => {
       .then(response => {
         if (response?.data) {
           notifySuccess('User Successfully Logged In')
-          window.location.href = '/checkout'
+          setTimeout(()=>{
+            window.location.href = '/checkout'
+          },1000)
+          
           dispatch(userlogin(response.data))
         }
         console.log(response.data);

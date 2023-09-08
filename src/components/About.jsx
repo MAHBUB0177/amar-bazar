@@ -6,6 +6,7 @@ import team2 from "../images/team-2.jpg.webp";
 import team3 from "../images/team-4.jpg.webp";
 import team4 from "../images/team-6.jpg.webp";
 import { TabTitle } from "../utils/FunctionTitle";
+import image1 from '../images/shoping.jpg'
 
 let ownerList = [
   {
@@ -57,7 +58,7 @@ export const About = () => {
 
         <div className="basis-1/4" style={{ paddingTop: "20px" }}>
           <img
-            src={image18}
+            src={image1}
             alt=""
             style={{ height: "220px", borderRadius: "10px", width: "350px" }}
           />

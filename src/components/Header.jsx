@@ -165,7 +165,7 @@ export const Header = () => {
                 <strong>
                   <span>
                     <IconButton className="color-[#FF6F00] h-[50px] w-[50px] hover:bg-orange-300 hover:rounded-md hover:text-white" onClick={togglefunction}>
-                      <Badge color="secondary" badgeContent={product.length} >
+                      <Badge color="secondary" >
                         <FavoriteIcon />
                       </Badge>
                     </IconButton>
