@@ -5,51 +5,81 @@ import { Button  } from '@mui/material';
 import Swal  from 'sweetalert2'
 import { useSelector ,useDispatch} from 'react-redux';
 import {decrementCounterALL} from '../Service/Action/Action'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 import React from 'react'
 import { TabTitle } from '../utils/FunctionTitle';
+import { useState } from 'react';
+import { notifyError, notifySuccess } from '../components/common/notifySuccess';
  const CheckOut = () => {
      TabTitle('Amar Bazar | CheckOut')
     const dispatch=useDispatch()
+    const product = useSelector((state) => state.product);
+    const navigate=useNavigate()
+
+    const [data,setData]=useState({
+      phone:'',
+      name:'',
+      date:'',
+      email:'',
+      time:'',
+      area:'',
+      city:'',
+      state:'',
+      postcode:'',
+      cardnumber:'',
+      expirationDate:'',
+      cvv:'',
+      cardholder:''
+      
+    })
+  console.log(data,'data')
+
   
 
-  const handelSubmit = event => {
-    let phone = document.getElementById('phone').value;
-    let name = document.getElementById('name').value;
-    let date = document.getElementById('date').value;
-    let email = document.getElementById('email').value;
-    let cardnumber = document.getElementById('card-number').value;
-    let expirationDate = document.getElementById('expiration-date').value;
-    
-  
-    if (name === "" || phone==='' ||  date==="" || email === '' || cardnumber==="" || expirationDate==="") {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Please fillup carefully!',
-        timer: 5000
-      })
-    }
-    else {
-     Swal.fire({
-      icon: 'success',
-      title: 'Your Order Is Confirmed!!',
-      showConfirmButton: false,
-      timer: 5000,
-     })
-     dispatch(decrementCounterALL());
-     window.location.href = '/'
-    // console.log('mahbub reedirect')
-    document.getElementsByName('contact-form')[0].reset()
-    }
-  
-   }
 
+   const handelSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+  
+    if (data.name === "" || data.phone === '' ||  data.date === "" || data.email === '' || data.cardnumber === "" || data.expirationdate === "") {
+      console.log('first')
+      notifyError('Please Fillup Carefully')
+    } else {
+      notifySuccess('Your Order Confirmed Successfuly')
+        // Reset name and email to empty strings
+        setData({
+      ...data,
+      phone:'',
+      name:'',
+      date:'',
+      email:'',
+      time:'',
+      area:'',
+      city:'',
+      state:'',
+      postcode:'',
+      cardnumber:'',
+      expirationDate:'',
+      cvv:'',
+      cardholder:''
+    });
+    dispatch(decrementCounterALL());
+    // window.location.href = '/'
+    navigate('/')
+    document.getElementById('contactForm').reset();
+
+    }
+  };
+
+   
   return (
+
+    <>
+      <form id='contactForm' onSubmit={handelSubmit}>
     <div class="flex flex-col md:flex-row items-start justify-between  mt-[30px] p-[50px] gap-2">
+
       <div class="mx-auto w-full md:w-3/5 bg-white p-10 rounded-md shadow-md mb-10">
-        <form>
+        
           <div class="mb-5">
             <label
               for="name"
@@ -61,6 +91,12 @@ import { TabTitle } from '../utils/FunctionTitle';
               type="text"
               name="name"
               id="name"
+              onChange={(e) => {
+                setData({
+                  ...data,
+                  name: e.target.value,
+                });
+              }}
               placeholder="Full Name"
               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
@@ -76,6 +112,12 @@ import { TabTitle } from '../utils/FunctionTitle';
               type="text"
               name="phone"
               id="phone"
+              onChange={(e) => {
+                setData({
+                  ...data,
+                  phone: e.target.value,
+                });
+              }}
               placeholder="Enter your phone number"
               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
@@ -91,6 +133,12 @@ import { TabTitle } from '../utils/FunctionTitle';
               type="email"
               name="email"
               id="email"
+              onChange={(e) => {
+                setData({
+                  ...data,
+                  email: e.target.value,
+                });
+              }}
               placeholder="Enter your email"
               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
@@ -108,6 +156,12 @@ import { TabTitle } from '../utils/FunctionTitle';
                   type="date"
                   name="date"
                   id="date"
+                  onChange={(e) => {
+                    setData({
+                      ...data,
+                      date: e.target.value,
+                    });
+                  }}
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
               </div>
@@ -124,6 +178,12 @@ import { TabTitle } from '../utils/FunctionTitle';
                   type="time"
                   name="time"
                   id="time"
+                  onChange={(e) => {
+                    setData({
+                      ...data,
+                      time: e.target.value,
+                    });
+                  }}
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
               </div>
@@ -141,6 +201,12 @@ import { TabTitle } from '../utils/FunctionTitle';
                     type="text"
                     name="area"
                     id="area"
+                    onChange={(e) => {
+                      setData({
+                        ...data,
+                        area: e.target.value,
+                      });
+                    }}
                     placeholder="Enter area"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
@@ -152,6 +218,12 @@ import { TabTitle } from '../utils/FunctionTitle';
                     type="text"
                     name="city"
                     id="city"
+                    onChange={(e) => {
+                      setData({
+                        ...data,
+                        city: e.target.value,
+                      });
+                    }}
                     placeholder="Enter city"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
@@ -163,6 +235,12 @@ import { TabTitle } from '../utils/FunctionTitle';
                     type="text"
                     name="state"
                     id="state"
+                    onChange={(e) => {
+                      setData({
+                        ...data,
+                        state: e.target.value,
+                      });
+                    }}
                     placeholder="Enter state"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
@@ -172,8 +250,14 @@ import { TabTitle } from '../utils/FunctionTitle';
                 <div class="mb-5">
                   <input
                     type="text"
-                    name="post-code"
+                    name="postcode"
                     id="post-code"
+                    onChange={(e) => {
+                      setData({
+                        ...data,
+                        postcode: e.target.value,
+                      });
+                    }}
                     placeholder="Post Code"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
@@ -182,18 +266,14 @@ import { TabTitle } from '../utils/FunctionTitle';
             </div>
           </div>
 
-          {/* <div>
-            <button class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-              Book Appointment
-            </button>
-          </div> */}
-        </form>
+          
+        
       </div>
 
       <div class="mx-auto w-full md:w-2/5    rounded-sm sticky ">
         <div class="bg-white rounded-lg shadow-lg p-6">
           <h2 class="text-lg font-medium mb-6">Payment Information</h2>
-          <form>
+          
             <div class="grid grid-cols-2 gap-6">
               <div class="col-span-2 sm:col-span-1">
                 <label
@@ -206,6 +286,12 @@ import { TabTitle } from '../utils/FunctionTitle';
                   type="text"
                   name="card-number"
                   id="card-number"
+                  onChange={(e) => {
+                    setData({
+                      ...data,
+                      cardnumber: e.target.value,
+                    });
+                  }}
                   placeholder="0000 0000 0000 0000"
                   class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
@@ -219,8 +305,14 @@ import { TabTitle } from '../utils/FunctionTitle';
                 </label>
                 <input
                   type="text"
-                  name="expiration-date"
+                  name="expirationdate"
                   id="expiration-date"
+                  onChange={(e) => {
+                    setData({
+                      ...data,
+                      expirationdate: e.target.value,
+                    });
+                  }}
                   placeholder="MM / YY"
                   class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
@@ -236,6 +328,12 @@ import { TabTitle } from '../utils/FunctionTitle';
                   type="text"
                   name="cvv"
                   id="cvv"
+                  onChange={(e) => {
+                    setData({
+                      ...data,
+                      cvv: e.target.value,
+                    });
+                  }}
                   placeholder="000"
                   class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
@@ -249,8 +347,14 @@ import { TabTitle } from '../utils/FunctionTitle';
                 </label>
                 <input
                   type="text"
-                  name="card-holder"
+                  name="cardholder"
                   id="card-holder"
+                  onChange={(e) => {
+                    setData({
+                      ...data,
+                      cardholder: e.target.value,
+                    });
+                  }}
                   placeholder="Full Name"
                   class="w-full py-3 px-4 border border-gray-400 rounded-lg focus:outline-none focus:border-blue-500"
                 />
@@ -259,16 +363,19 @@ import { TabTitle } from '../utils/FunctionTitle';
             <div class="mt-8">
               <button
                 type="submit"
-                onClick={handelSubmit}
                 class="w-full bg-green-500 hover:bg-blue-600 text-white font-medium py-3 rounded-lg focus:outline-none"
               >
                 Confirm
               </button>
             </div>
-          </form>
+         
         </div>
       </div>
     </div>
+
+      </form>
+    </>
+    
   );
 }
 

@@ -98,7 +98,7 @@ export const Header = () => {
           </Link>
         </div>
 
-        <div>
+        <div className="">
           {/* //search bar */}
           <Paper className="opening shadow-md border-1  border-orange-300">
             <Form name="textform" >

@@ -23,7 +23,7 @@ export const Footer = () => {
           <div class="sm:col-span-2">
 
             <div class=" lg:max-w-sm">
-              <a href="/" aria-label="Go home" title="Company" className='flex' >
+              <a href="/" aria-label="Go home" title="Company" className='flex justify-center items-center md:justify-start' >
                 <svg class="w-8 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">
                   <rect x="3" y="1" width="7" height="12"></rect>
                   <rect x="3" y="17" width="7" height="6"></rect>
@@ -40,7 +40,8 @@ export const Footer = () => {
               </p>
             </div>
           </div>
-          <div class="space-y-2 text-sm">
+          <div className='flex justify-center items-center text-center'>
+          <div class="space-y-2 text-sm ">
             <p class="text-xl sm:text-center  md:text-start font-bold tracking-wide text-gray-900">Contacts</p>
             <div class="flex ">
               <p class="mr-1 text-gray-800">Phone:</p>
@@ -57,6 +58,8 @@ export const Footer = () => {
               </a>
             </div>
           </div>
+          </div>
+          
           <div>
             <p class="text-xl sm:text-center md:text-start font-bold tracking-wide text-gray-900 ">Social</p>
             <ul class="flex justify-center mt-2 space-x-5">

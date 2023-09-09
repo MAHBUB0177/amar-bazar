@@ -3,28 +3,39 @@ import "../page/Common.css";
 import "../page/Common.css";
 import Swal from "sweetalert2";
 import { TabTitle } from "../utils/FunctionTitle";
+import { useState } from "react";
+import { notifyError, notifySuccess } from "./common/notifySuccess";
 export const Contact = () => {
   TabTitle("Amar Bazar | Contact");
-  const handelSubmit = (event) => {
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
 
-    if (name === "" || email === "") {
-    return  Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please fillup carefully!",
-        // timer: 2000
-      });
+  const [contact,setcontact]=useState({
+    name:'',
+    email:'',
+    messege:''
+  })
+
+
+  
+  console.log(contact,'asdfghjkl')
+  const handelSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+  
+    if (contact.name === "" || contact.email === "" || contact.messege === "") {
+      console.log('first')
+      notifyError('Something went wrong');
     } else {
-      Swal.fire({
-        icon: "success",
-        title: "Your message has been sent successfully!!",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      notifySuccess('Your message sent successfully');
+
+        // Reset name and email to empty strings
+    setcontact({
+      ...contact,
+      name: '',
+      email: '',
+      messege:''
+    });
+    document.getElementById('contactForm').reset();
+
     }
-    document.getElementsByName("contact-form").reset()
   };
   return (
     <div>
@@ -149,7 +160,7 @@ export const Contact = () => {
               </div>
               <div class="card h-fit max-w-6xl p-5 md:p-12" id="form">
                 <h2 class="mb-4 text-2xl font-bold">Ready to Get Started?</h2>
-                <form id="contactForm">
+                <form id="contactForm" onSubmit={handelSubmit}>
                   <div class="mb-6">
                     <div class="mx-0 mb-1 sm:mb-4">
                       <div class="mx-0 mb-1 sm:mb-4">
@@ -161,7 +172,14 @@ export const Contact = () => {
                           type="text"
                           class="px-2 py-2 border w-full outline-none rounded-md"
                           id="name"
+                          name="name"
                           placeholder="Name"
+                          onChange={(e) => {
+                            setcontact({
+                              ...contact,
+                              name: e.target.value,
+                            });
+                          }}
                         />
                       </div>
                       <div class="mx-0 mb-1 sm:mb-4">
@@ -171,9 +189,16 @@ export const Contact = () => {
                         ></label>
                         <input
                           type="email"
+                          name='email'
                           class="px-2 py-2 border w-full outline-none rounded-md"
                           id="email"
                           placeholder="Enter your email address"
+                          onChange={(e) => {
+                            setcontact({
+                              ...contact,
+                              email: e.target.value,
+                            });
+                          }}
                         />
                       </div>
                     </div>
@@ -184,11 +209,17 @@ export const Contact = () => {
                       ></label>
                       <textarea
                         id="messege"
-                        name="textarea"
+                        name="messege"
                         cols="30"
                         rows="5"
                         placeholder="Write your message..."
                         class="px-2 py-2 border rounded-[5px] w-full outline-none"
+                        onChange={(e) => {
+                          setcontact({
+                            ...contact,
+                            messege: e.target.value,
+                          });
+                        }}
                       ></textarea>
                     </div>
                   </div>
@@ -196,10 +227,12 @@ export const Contact = () => {
                     <button
                       type="submit"
                       class="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0"
-                      onClick={handelSubmit}
+                      
                     >
                       Send Message
                     </button>
+
+                    
                   </div>
                 </form>
               </div>

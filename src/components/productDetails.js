@@ -103,8 +103,10 @@ export const ProductDetails = () => {
                         </div>
                     </div>
                     <div className="flex justify-between">
-                        <div className="title-font font-medium text-2xl text-gray-900">$45.99</div>
-                        <Button type={"submit"} btnName="Add To Cart" size={"w-40"} />
+                        <div className="title-font font-medium text-2xl text-gray-900">${productDetails?.price}</div>
+                        <button className="bg-orange-400 rounded-md p-2 font-semibold text-white" onClick={() => handelincrement(productDetails)}>
+                    ADD TO CART
+                  </button>
                     </div>
                 </div>
             </div>

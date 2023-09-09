@@ -6,6 +6,7 @@ import { Shop } from './Shop'
 import Responsive from './Featered'
 import { Slider } from './Slider'
 import Number from './Dummynumber'
+import Menu from '../components/menu/menulist'
 
 
 export const HomePage = () => {
@@ -13,6 +14,8 @@ export const HomePage = () => {
   return (
     <div className='' style={{}}>
           <Slider/>
+
+          <Menu/>
           {/* <Number></Number> */}
           <Categoris/>
           <Shop/>

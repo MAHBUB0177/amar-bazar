@@ -156,7 +156,7 @@ export const Slider = () => {
       </div>
 
 
-      <div className="flex justify-between bg-[#f5afa9] rounded-md mb-[20px]  p-[20px] " >
+      <div className="hidden  lg:flex justify-between bg-[#f5afa9] rounded-md mb-[20px]  p-[20px] " >
         <div className='col-md-8 text-black font-semibold'>
           <span>  <h4 ><strong ><span style={{ color: 'green' }}>100% Branded Quality</span></strong>  Product</h4> </span>
           <p >See Our latest discounted products from here and get a special discount product </p>
@@ -168,22 +168,6 @@ export const Slider = () => {
 
       </div>
 
-
-
-      {/* <div className=' row  opening' style={{background:'#8c6e91',borderRadius:'30px',marginTop:'2px',height:'100px',}}>
-          <div className='col-md-4' style={{paddingTop:'40px',fontSize:'20px'}}>
-                    <p><span><LocalShippingIcon/></span> Free Shipping From $500.00 |</p>
-          </div>
-          <div className='col-md-4' style={{paddingTop:'40px',fontSize:'20px'}}>
-                    <p><span></span><PermPhoneMsgIcon/> Support 24/7 At Anytime |</p>
-          </div>
-          <div className='col-md-4' style={{paddingTop:'40px',fontSize:'20px'}}>
-                    <p><span></span> Latest Offer Upto 20% Off |</p>
-          </div> */}
-
-
-
-      {/* </div> */}
 
 
     </div>
