@@ -3,6 +3,8 @@ import img404 from '../images/404.svg'
 import { TabTitle } from '../utils/FunctionTitle'
 import { useSelector } from 'react-redux'
 
+
+
 export const Profile = () => {
     TabTitle('Amar Bazar | Profile')
 

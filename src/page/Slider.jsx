@@ -98,7 +98,7 @@ export const Slider = () => {
 
       <div className='col-md-4 rounded-md bg-[#F9FAFB] ' style={{ border: '2px solid tomato', height: '360px' }} id="showdiv">
       <h6 className='bg-orange-300 w-[100%] p-2  font-semibold rounded-sm' >Latest Super Discount Active Coupon Code</h6>
-        <div  className=' flex width-auto h-[140px] mt-[15px] shadow-md p-[20px] gap-3 rounded-sm' >
+        <div  className=' flex width-auto h-[140px] mt-[15px] shadow-md p-[20px] gap-5 rounded-sm' >
           <img src={image5} alt='card-image' className='h-[90px] w-[50%] rounded-md'/>
           <div>
             <div className='flex gap-2'>
@@ -124,7 +124,7 @@ export const Slider = () => {
         </div>
 
 
-        <div  className=' flex width-auto h-[140px] mt-[10px] shadow-md p-[20px] gap-3 rounded-sm'>
+        <div  className=' flex width-auto h-[140px] mt-[10px] shadow-md p-[20px] gap-5 rounded-sm'>
           <img src={vagitables} alt='card-image' className='h-[90px] w-[50%] rounded-md'/>
           <div>
             <div className='flex gap-2'>

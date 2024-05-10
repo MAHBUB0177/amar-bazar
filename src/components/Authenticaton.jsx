@@ -56,7 +56,7 @@ export const Authenticaton = () => {
   const [password, setPassword] = useState('');
   const LoginNow = async () => {
     let payload = {
-      username: email,//kminchelle
+      username: email,//kminchelle 
       password: password,//0lelplR
     }
     if(email ==='' || password === ''){
